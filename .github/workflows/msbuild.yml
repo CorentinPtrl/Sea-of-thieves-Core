@@ -30,3 +30,23 @@ jobs:
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild SotCoreWrapper/SotCoreWrapper.vcxproj /m  /property:Platform=x64
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: commit_${{ github.sha }}
+        release_name: Commit ${{ github.sha }}
+        draft: false
+        prerelease: true
+    - name: Release Windows Build
+      id: release-win
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: SotCoreWrapper.dll
+        asset_name: SotCoreWrapper.dll
+        asset_content_type: application/octet-stream
