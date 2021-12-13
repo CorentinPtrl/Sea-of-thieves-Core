@@ -6,7 +6,7 @@
 #include <thread>
 #include <chrono>
 #include <vector>
-
+#include "UE4ActorWrapper.h"
 namespace Core
 {
 	class SotCore
@@ -22,6 +22,7 @@ namespace Core
 		public:
 			std::string name;
 			Vector pos;
+			SoT::UE4Actor^ ActorToManagedActor();
 		};
 
 	public:

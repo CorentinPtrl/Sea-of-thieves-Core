@@ -78,6 +78,7 @@ namespace Core
 		return converter.to_bytes(wstring);
 	}
 
+
 	std::string getNameFromIDmem(int ID)
 	{
 		try
@@ -91,6 +92,7 @@ namespace Core
 			return std::string("");
 		}
 	}
+
 
 	SotCore::UE4Actor SotCore::GetLocalPlayer()
 	{
@@ -144,5 +146,31 @@ namespace Core
 			actors.push_back(actor);
 		}
 		return actors;
+	}
+
+	System::String^ StdStringToUTF16(std::string s)
+	{
+
+		cli::array<System::Byte>^ a = gcnew cli::array<System::Byte>(s.length());
+		int i = s.length();
+		while (i-- > 0)
+		{
+			a[i] = s[i];
+		}
+
+		return System::Text::Encoding::UTF8->GetString(a);
+	}
+
+
+	SoT::UE4Actor^ SotCore::UE4Actor::ActorToManagedActor()
+	{
+		SoT::UE4Actor^ actorWrapper = gcnew SoT::UE4Actor;
+		SoT::VectorUE4^ posWrapper = gcnew SoT::VectorUE4;
+		posWrapper->x = pos.x;
+		posWrapper->y = pos.y;
+		posWrapper->z = pos.z;
+		actorWrapper->pos = posWrapper;
+		actorWrapper->name = StdStringToUTF16(name);
+		return actorWrapper;
 	}
 }
