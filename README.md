@@ -8,13 +8,13 @@ SoT External Tool Premium](https://github.com/xTeJk/SoT_External_Tool_Premium)
 #### Get all actors
 
 ```C#
- SotCore core = new SotCore();
- if (core.Prepare())
+SotCore core = new SotCore();
+if (core.Prepare())
 {
-	UE4Actor[] actors = core.GetActors();
+    UE4Actor[] actors = core.GetActors();
     foreach (UE4Actor actor in actors)
     {
-		//Do your things here
+	//Do your things here
     }
 }
 else
@@ -25,15 +25,15 @@ else
 #### Get LocalPlayer
 
 ```C#
- SotCore core = new SotCore();
- if (core.Prepare())
+SotCore core = new SotCore();
+if (core.Prepare())
 {
-	UE4Actor localPlayer = core.GetLocalPlayer();
-	//Do your things here
+    UE4Actor localPlayer = core.GetLocalPlayer();
+    //Do your things here
 }
 else
 {
-  //Failed, Sea of thieves not detected
+    //Failed, Sea of thieves not detected
 }
 ```
 #### And if you want some help feel free to join the [discord](https://discord.gg/KkBVKCFdzz)
