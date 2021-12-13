@@ -1,7 +1,7 @@
 //ManagedObject.h
 #pragma once
 using namespace System;
-namespace CLI {
+namespace SoT {
 
     template<class T>
     public ref class ManagedObject

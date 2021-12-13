@@ -124,8 +124,6 @@
     <ClInclude Include="Core.h" />
     <ClInclude Include="SotCore.h" />
     <ClInclude Include="globals.h" />
-    <ClInclude Include="Level.h" />
-    <ClInclude Include="LevelWrapper.h" />
     <ClInclude Include="ManagedObject.h" />
     <ClInclude Include="MemoryManager.h" />
     <ClInclude Include="offsets.h" />
@@ -142,8 +140,6 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="SotCore.cpp" />
     <ClCompile Include="globals.cpp" />
-    <ClCompile Include="Level.cpp" />
-    <ClCompile Include="LevelWrapper.cpp" />
     <ClCompile Include="MemoryManager.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

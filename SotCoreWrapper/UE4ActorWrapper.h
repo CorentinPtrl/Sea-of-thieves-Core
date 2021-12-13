@@ -2,9 +2,9 @@
 #include <string>
 #include "VectorUE4.h"
 using namespace System;
-namespace CLI
+namespace SoT
 {
-	public ref class UE4ActorWrapper
+	public ref class UE4Actor
 	{
 	public:
 		System::String^ name;

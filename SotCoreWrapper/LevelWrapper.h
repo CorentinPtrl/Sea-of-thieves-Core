@@ -4,7 +4,7 @@
 #include "VectorUE4.h"
 #include "UE4ActorWrapper.h"
 using namespace System;
-namespace CLI
+namespace SoT
 {
     public ref class SotLevel : public ManagedObject<Core::Level>
     {

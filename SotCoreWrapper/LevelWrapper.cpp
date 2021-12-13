@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "LevelWrapper.h"
-namespace CLI
+namespace SoT
 {
     System::String^ StdStringToUTF16(std::string s)
     {

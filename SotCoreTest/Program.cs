@@ -1,5 +1,5 @@
 ﻿using System;
-using CLI;
+using SoT;
 namespace SotEspCoreTest
 {
     class Program
@@ -11,16 +11,17 @@ namespace SotEspCoreTest
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             SotCore core = new SotCore();
-            bool test = core.Prepare();
-            Console.WriteLine("Finish");
-            SotLevel level = new SotLevel();
-            UE4ActorWrapper[] actors = level.getActors();
-            foreach(UE4ActorWrapper actor in actors)
+            if (core.Prepare())
             {
-                Console.WriteLine("Name : "+actor.name + " Pos: "+ convertVecToStr(actor.pos));
+                UE4Actor[] actors = core.GetActors();
+                core.GetLocalPlayer();
+                foreach (UE4Actor actor in actors)
+                {
+                    Console.WriteLine("Name : " + actor.name + " Pos: " + convertVecToStr(actor.pos));
+                }
             }
+           
         }
     }
 }

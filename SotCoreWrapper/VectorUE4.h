@@ -1,6 +1,6 @@
 #pragma once
 #include "pch.h"
-namespace CLI
+namespace SoT
 {
 	public ref class VectorUE4
 	{
