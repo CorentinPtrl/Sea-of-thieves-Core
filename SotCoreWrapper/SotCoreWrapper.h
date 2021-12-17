@@ -15,7 +15,6 @@ namespace SoT
 
         SotCore();
         bool Prepare();
-        UE4Actor^ GetLocalPlayer();
         array<UE4Actor^>^ GetActors();
     };
 }

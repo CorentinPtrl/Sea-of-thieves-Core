@@ -6,30 +6,21 @@
 #include <thread>
 #include <chrono>
 #include <vector>
+#include "SOTStuff.h"
 #include "UE4ActorWrapper.h"
 namespace Core
 {
 	class SotCore
 	{
 	public:
-		struct Vector {
-		public:
-			float x;
-			float y;
-			float z;
-		};
-		struct UE4Actor {
-		public:
-			std::string name;
-			Vector pos;
-			SoT::UE4Actor^ ActorToManagedActor();
-		};
-
+		static SotCore* singleton;
+		std::vector<AActor> TempActors;
 	public:
 		SotCore();
 		bool Prepare();
-		Core::SotCore::UE4Actor GetLocalPlayer();
-		std::vector<Core::SotCore::UE4Actor> getActors();
+		std::vector<AActor> getActors();
+		std::string getNameFromIDmem(int ID);
+		SoT::UE4Actor^ ActorToManaged(int id, AActor actor);
 
 	};
 }

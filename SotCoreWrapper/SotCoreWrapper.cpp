@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "SOTStuff.h"
 #include "SotCoreWrapper.h"
 namespace SoT
 {  
@@ -12,13 +13,6 @@ namespace SoT
         return m_Instance->Prepare();
     }
 
-    UE4Actor^ SotCore::GetLocalPlayer()
-    {
-        auto actor = m_Instance->GetLocalPlayer();
-        return actor.ActorToManagedActor();
-    }
-
-
     array<UE4Actor^>^ SotCore::GetActors()
     {
         auto actors = m_Instance->getActors();
@@ -26,7 +20,7 @@ namespace SoT
 
         for (int i = 0; i < actors.size(); i++)
         {
-            list[i] = actors[i].ActorToManagedActor();
+            list[i] = m_Instance->ActorToManaged(i, actors[i]);
         }
         return list;
     }

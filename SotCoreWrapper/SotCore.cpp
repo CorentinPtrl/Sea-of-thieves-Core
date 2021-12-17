@@ -9,8 +9,12 @@
 using namespace System;
 namespace Core
 {
+	SotCore* SotCore::singleton;
+
 	SotCore::SotCore()
 	{
+		if (!singleton)
+			singleton = this;
 	}
 
 	bool SotCore::Prepare()
@@ -79,7 +83,7 @@ namespace Core
 	}
 
 
-	std::string getNameFromIDmem(int ID)
+	std::string SotCore::getNameFromIDmem(int ID)
 	{
 		try
 		{
@@ -93,25 +97,7 @@ namespace Core
 		}
 	}
 
-
-	SotCore::UE4Actor SotCore::GetLocalPlayer()
-	{
-		auto gameWorld = MemoryManager->Read<cUWorld>(MemoryManager->Read<uintptr_t>(Core::UWorld));
-		auto LP = gameWorld.GetGameInstance().GetLocalPlayer();
-		auto LPController = LP.GetPlayerController();
-		auto pos = LPController.GetActor().GetRootComponent().GetPosition();
-		auto objectName = getNameFromIDmem(LPController.GetActor().GetID());
-		Core::SotCore::Vector ActorPos;
-		ActorPos.x = pos.x;
-		ActorPos.y = pos.y;
-		ActorPos.z = pos.z;
-		UE4Actor actor;
-		actor.name = objectName;
-		actor.pos = ActorPos;
-		return actor;
-	}
-
-	std::vector<SotCore::UE4Actor> SotCore::getActors()
+	std::vector<AActor> SotCore::getActors()
 	{
 		auto gameWorld = MemoryManager->Read<cUWorld>(MemoryManager->Read<uintptr_t>(Core::UWorld));
 		auto LP = gameWorld.GetGameInstance().GetLocalPlayer();
@@ -128,49 +114,27 @@ namespace Core
 
 		auto worldLevel = gameWorld.GetLevel();
 		TArray<Chunk*> worldActors = worldLevel.GetActors();
-		std::vector<SotCore::UE4Actor> actors;
+		std::vector<AActor> actors;
 
 		for (int i = 0; i < worldActors.Length(); ++i)
 		{
 			auto objectActor = *reinterpret_cast<AActor*>(&worldActors[i]);
 			auto objectID = objectActor.GetID();
-			auto pos = objectActor.GetRootComponent().GetPosition();
 			auto objectName = getNameFromIDmem(objectID);
-			Core::SotCore::Vector ActorPos;
-			ActorPos.x = pos.x;
-			ActorPos.y = pos.y;
-			ActorPos.z = pos.z;
-			UE4Actor actor;
-			actor.name = objectName;
-			actor.pos = ActorPos;
-			actors.push_back(actor);
+;
+			actors.push_back(objectActor);
 		}
+		TempActors = actors;
 		return actors;
 	}
 
-	System::String^ StdStringToUTF16(std::string s)
+	 SoT::UE4Actor^ SotCore::ActorToManaged(int id, AActor actor)
 	{
 
-		cli::array<System::Byte>^ a = gcnew cli::array<System::Byte>(s.length());
-		int i = s.length();
-		while (i-- > 0)
-		{
-			a[i] = s[i];
-		}
-
-		return System::Text::Encoding::UTF8->GetString(a);
+		 SoT::UE4Actor^ act = gcnew SoT::UE4Actor;
+		 act->BaseName = gcnew System::String(getNameFromIDmem(actor.GetID()).c_str());
+		 act->IDActors = gcnew System::Int32(id);
+		 return act;
 	}
 
-
-	SoT::UE4Actor^ SotCore::UE4Actor::ActorToManagedActor()
-	{
-		SoT::UE4Actor^ actorWrapper = gcnew SoT::UE4Actor;
-		SoT::VectorUE4^ posWrapper = gcnew SoT::VectorUE4;
-		posWrapper->x = pos.x;
-		posWrapper->y = pos.y;
-		posWrapper->z = pos.z;
-		actorWrapper->pos = posWrapper;
-		actorWrapper->name = StdStringToUTF16(name);
-		return actorWrapper;
-	}
 }

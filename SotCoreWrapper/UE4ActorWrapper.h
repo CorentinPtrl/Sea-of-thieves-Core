@@ -6,9 +6,13 @@ namespace SoT
 {
 	public ref class UE4Actor
 	{
+	private:
+		bool isValid();
 	public:
-		System::String^ name;
-		VectorUE4^ pos;
+		System::String^ getName();
+		VectorUE4^ UE4Actor::getPos();
+		System::String^ BaseName;
+		System::Int32^ IDActors;
 	};
 }
 

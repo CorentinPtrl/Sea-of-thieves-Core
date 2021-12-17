@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using SoT;
 namespace SotEspCoreTest
 {
@@ -7,7 +8,7 @@ namespace SotEspCoreTest
 
         public static string convertVecToStr(VectorUE4 vec)
         {
-            return "(X: " + vec.x + " Y: " +vec.y+ " Z: " + vec.z + ")";
+            return "(X: " + vec.getX() + " Y: " +vec.getY()+ " Z: " + vec.getZ() + ")";
         }
         static void Main(string[] args)
         {
@@ -15,10 +16,16 @@ namespace SotEspCoreTest
             if (core.Prepare())
             {
                 UE4Actor[] actors = core.GetActors();
-                core.GetLocalPlayer();
                 foreach (UE4Actor actor in actors)
                 {
-                    Console.WriteLine("Name : " + actor.name + " Pos: " + convertVecToStr(actor.pos));
+                    if (actor.getName().Equals("BP_PlayerPirate_C"))
+                    {
+                        while (true)
+                        {
+                            Console.WriteLine("Name : " + actor.BaseName + " | Actual Name :" + actor.getName() + " Pos :" + convertVecToStr(actor.getPos()));
+                            Thread.Sleep(500);
+                        }
+                    }
                 }
             }
            
