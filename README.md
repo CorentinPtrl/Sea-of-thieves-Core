@@ -9,7 +9,8 @@ SoT External Tool Premium](https://github.com/xTeJk/SoT_External_Tool_Premium)
 
 ```C#
 SotCore core = new SotCore();
-if (core.Prepare())
+//if u are in steam version replace by true
+if (core.Prepare(false))
 {
     UE4Actor[] actors = core.GetActors();
     foreach (UE4Actor actor in actors)
@@ -26,6 +27,7 @@ else
 
 ```C#
 SotCore core = new SotCore();
+//if u are in steam version replace by true
 if (core.Prepare())
 {
     UE4Actor localPlayer = core.GetLocalPlayer();
