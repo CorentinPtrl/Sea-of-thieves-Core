@@ -44,6 +44,15 @@ namespace SoT
 		}
 	}
 
+	VectorUE4^ UE4Actor::getRot()
+	{
+		if (isValid())
+		{
+
+			return gcnew VectorUE4(getActor().GetRootComponent().GetRotation());
+		}
+	}
+
 	System::String^ UE4Actor::getName()
 	{
 		if (isValid())

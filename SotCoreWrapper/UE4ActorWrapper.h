@@ -12,6 +12,7 @@ namespace SoT
 	public:
 		System::String^ getName();
 		VectorUE4^ UE4Actor::getPos();
+		VectorUE4^ UE4Actor::getRot();
 		System::String^ BaseName;
 		System::Int32^ IDActors;
 	};
