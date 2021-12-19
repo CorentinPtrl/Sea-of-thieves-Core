@@ -8,6 +8,7 @@ namespace SoT
 	{
 	private:
 		bool isValid();
+		AActor UE4Actor::getActor();
 	public:
 		System::String^ getName();
 		VectorUE4^ UE4Actor::getPos();

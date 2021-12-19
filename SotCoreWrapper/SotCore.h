@@ -17,7 +17,9 @@ namespace Core
 		std::vector<AActor> TempActors;
 	public:
 		SotCore();
-		bool Prepare();
+		bool Prepare(bool IsSteam);
+		AActor getLocalPlayer();
+		TArray<Chunk*> SotCore::getLevelActors();
 		std::vector<AActor> getActors();
 		std::string getNameFromIDmem(int ID);
 		SoT::UE4Actor^ ActorToManaged(int id, AActor actor);

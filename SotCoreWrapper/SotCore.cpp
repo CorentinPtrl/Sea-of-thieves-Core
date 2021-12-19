@@ -17,7 +17,7 @@ namespace Core
 			singleton = this;
 	}
 
-	bool SotCore::Prepare()
+	bool SotCore::Prepare(bool IsSteam)
 	{
 		if (!ProcessManager->setWindow("Sea of Thieves"))
 		{
@@ -51,16 +51,32 @@ namespace Core
 
 		if (!Core::GNames)
 		{
-			address = MemoryManager->FindSignature(Core::baseModule, Core::baseModuleSize,
-				(BYTE*)"\x48\x8B\x1D\x00\x00\x00\x00\x48\x85\x00\x75\x3A", (char*)"xxx????xx?xx");
+			if (!IsSteam)
+			{
+				address = MemoryManager->FindSignature(Core::baseModule, Core::baseModuleSize,
+					(BYTE*)"\x48\x8B\x1D\x00\x00\x00\x00\x48\x85\x00\x75\x3A", (char*)"xxx????xx?xx");
+			}
+			else
+			{
+				address = MemoryManager->FindSignature(Core::baseModule, Core::baseModuleSize,
+					(BYTE*)"\x48\x8B\x1D\x00\x00\x00\x00\x48\x85\xDB\x75\x00\xB9\x08\x04\x00\x00", (char*)"xxx????xxxx?xxxxx");
+			}
 			auto gnamesoffset = MemoryManager->Read<int32_t>(address + 3);
 			Core::GNames = MemoryManager->Read<uintptr_t>(address + gnamesoffset + 7);
 		}
 
 		if (!Core::GObjects)
 		{
-			address = MemoryManager->FindSignature(Core::baseModule, Core::baseModuleSize,
-				(BYTE*)"\x48\x8B\x15\x00\x00\x00\x00\x3B\x42\x1C", (char*)"xxx????xxx");
+			if (!IsSteam)
+			{
+				address = MemoryManager->FindSignature(Core::baseModule, Core::baseModuleSize,
+					(BYTE*)"\x48\x8B\x15\x00\x00\x00\x00\x3B\x42\x1C", (char*)"xxx????xxx");
+			}
+			else
+			{
+				address = MemoryManager->FindSignature(Core::baseModule, Core::baseModuleSize,
+					(BYTE*)"\x89\x0D\x00\x00\x00\x00\x48\x8B\xDF\x48\x89\x5C\x24", (char*)"xx????xxxxxxx");
+			}
 			auto gobjectsoffset = MemoryManager->Read<int32_t>(address + 3);
 			auto offset = gobjectsoffset + 7;
 			Core::GObjects = MemoryManager->Read<uintptr_t>(address + gobjectsoffset + 7);
@@ -69,7 +85,6 @@ namespace Core
 		if (!Core::baseThreadID)
 			Core::baseThreadID = GetCurrentThreadId();
 
-		///-> Get all access
 		GetWindowThreadProcessId(Core::tWnd, &Core::baseProcessID);
 		Core::hGame = OpenProcess(PROCESS_ALL_ACCESS, FALSE, Core::baseProcessID);
 		return true;
@@ -97,20 +112,26 @@ namespace Core
 		}
 	}
 
-	std::vector<AActor> SotCore::getActors()
+	TArray<Chunk*> SotCore::getLevelActors()
+	{
+		auto gameWorld = MemoryManager->Read<cUWorld>(MemoryManager->Read<uintptr_t>(Core::UWorld));
+
+		auto worldLevel = gameWorld.GetLevel();
+		TArray<Chunk*> worldActors = worldLevel.GetActors();
+		return worldActors;
+	}
+
+	AActor SotCore::getLocalPlayer()
 	{
 		auto gameWorld = MemoryManager->Read<cUWorld>(MemoryManager->Read<uintptr_t>(Core::UWorld));
 		auto LP = gameWorld.GetGameInstance().GetLocalPlayer();
-		auto LPController = LP.GetPlayerController();
-		auto LPCameraManager = LPController.GetCameraManager();
+		AActor actor = LP.GetPlayerController().GetActor();
+		return actor;
+	}
 
-		SOT->localPlayer.name = wstringToString(LPController.GetActor().GetPlayerState().GetName());
-
-		SOT->localPlayer.position = LPController.GetActor().GetRootComponent().GetPosition();
-
-		SOT->localCamera.fov = LPCameraManager.GetCameraFOV();
-		SOT->localCamera.angles = LPCameraManager.GetCameraRotation();
-		SOT->localCamera.position = LPCameraManager.GetCameraPosition();
+	std::vector<AActor> SotCore::getActors()
+	{
+		auto gameWorld = MemoryManager->Read<cUWorld>(MemoryManager->Read<uintptr_t>(Core::UWorld));
 
 		auto worldLevel = gameWorld.GetLevel();
 		TArray<Chunk*> worldActors = worldLevel.GetActors();
@@ -130,7 +151,6 @@ namespace Core
 
 	 SoT::UE4Actor^ SotCore::ActorToManaged(int id, AActor actor)
 	{
-
 		 SoT::UE4Actor^ act = gcnew SoT::UE4Actor;
 		 act->BaseName = gcnew System::String(getNameFromIDmem(actor.GetID()).c_str());
 		 act->IDActors = gcnew System::Int32(id);
@@ -138,3 +158,4 @@ namespace Core
 	}
 
 }
+

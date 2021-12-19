@@ -8,9 +8,22 @@ namespace SoT
         : ManagedObject(new Core::SotCore())
     {
     }
-    bool SotCore::Prepare()
+
+    bool SotCore::Prepare(System::Boolean^ IsSteam)
     {
-        return m_Instance->Prepare();
+        if (IsSteam)
+        {
+            return m_Instance->Prepare(true);
+        }
+        else
+        {
+            return m_Instance->Prepare(false);
+        }
+    }
+
+    UE4Actor^ SotCore::GetLocalPlayer()
+    {
+        return m_Instance->ActorToManaged(-1, m_Instance->getLocalPlayer());
     }
 
     array<UE4Actor^>^ SotCore::GetActors()

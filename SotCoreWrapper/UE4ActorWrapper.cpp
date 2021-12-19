@@ -13,9 +13,23 @@ namespace SoT
 		return unmanagedString;
 	}
 
+	AActor UE4Actor::getActor()
+	{
+		AActor actor;
+		if (((int)this->IDActors) == -1)
+		{
+			actor = Core::SotCore::singleton->getLocalPlayer();
+		}
+		else
+		{
+			actor = Core::SotCore::singleton->TempActors[((int)this->IDActors)];
+		}
+		return actor;
+	}
+
 	bool UE4Actor::isValid()
 	{
-		AActor actor = Core::SotCore::singleton->TempActors[(int)this->IDActors];
+		AActor actor = getActor();
 		std::string test = Core::SotCore::singleton->getNameFromIDmem(actor.GetID());
 		std::string standardString = ToUnmanagedString(this->BaseName);
 		return test.compare(standardString) == 0;
@@ -25,8 +39,8 @@ namespace SoT
 	{
 		if (isValid())
 		{
-			AActor actor = Core::SotCore::singleton->TempActors[(int)this->IDActors];
-			return gcnew VectorUE4(actor.GetRootComponent().GetPosition());
+
+			return gcnew VectorUE4(getActor().GetRootComponent().GetPosition());
 		}
 	}
 
@@ -34,11 +48,11 @@ namespace SoT
 	{
 		if (isValid())
 		{
-			AActor actor = Core::SotCore::singleton->TempActors[(int)this->IDActors];
+			AActor actor = getActor();
 			std::string test = Core::SotCore::singleton->getNameFromIDmem(actor.GetID());
 			return gcnew System::String(test.c_str());
 		}
-		return gcnew System::String("NonePasCool");
+		return gcnew System::String("None");
 	}
 
 }

@@ -12,9 +12,9 @@ namespace SoT
     public ref class SotCore : public ManagedObject<Core::SotCore>
     {
     public:
-
         SotCore();
-        bool Prepare();
+        bool Prepare(System::Boolean^ IsSteam);
+        UE4Actor^ GetLocalPlayer();
         array<UE4Actor^>^ GetActors();
     };
 }

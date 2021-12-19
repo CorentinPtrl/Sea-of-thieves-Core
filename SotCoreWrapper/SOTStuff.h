@@ -44,15 +44,6 @@ struct FGuid
 
 };
 
-struct Player
-{
-	Vector3 position, angles;
-	float health, maxhealth;
-	int distance;
-	FGuid crewID, allyID;
-	std::string name, heldItem;
-};
-
 struct Camera
 {
 	Vector3 position, angles;
@@ -63,16 +54,6 @@ struct Ships
 {
 	FGuid crewID;
 	std::string type;
-};
-
-class cSOT
-{
-public:
-	Player localPlayer;
-	Player Pirates[24];
-	Camera localCamera;
-	Ships  Ships[6];
-	std::vector<Vector2> XMarks;
 };
 
 template<class TEnum>
@@ -507,5 +488,26 @@ private:
 	char __pad0x0[0x0150];
 	TArray <class ULevel*> AllLevels;
 };
+
+struct Player
+{
+	AActor actor;
+	float health, maxhealth;
+	int distance;
+	FGuid crewID, allyID;
+	std::string name, heldItem;
+};
+
+
+class cSOT
+{
+public:
+	Player localPlayer;
+	Player Pirates[24];
+	Camera localCamera;
+	Ships  Ships[6];
+	std::vector<Vector2> XMarks;
+};
+
 
 extern cSOT* SOT;
