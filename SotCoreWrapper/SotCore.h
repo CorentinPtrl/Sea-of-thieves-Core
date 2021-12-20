@@ -20,9 +20,13 @@ namespace Core
 		bool Prepare(bool IsSteam);
 		AActor getLocalPlayer();
 		TArray<Chunk*> SotCore::getLevelActors();
+		float SotCore::GetCameraFOV();
+		Vector3 GetCameraRotation();
+		Vector3 GetCameraPosition();
 		std::vector<AActor> getActors();
 		std::string getNameFromIDmem(int ID);
 		SoT::UE4Actor^ ActorToManaged(int id, AActor actor);
+
 
 	};
 }

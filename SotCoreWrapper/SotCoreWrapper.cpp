@@ -26,6 +26,21 @@ namespace SoT
         return m_Instance->ActorToManaged(-1, m_Instance->getLocalPlayer());
     }
 
+    System::Single^ SotCore::GetCameraFOV()
+    {
+        return gcnew System::Single(m_Instance->GetCameraFOV());
+    }
+
+    VectorUE4^ SotCore::GetCameraPosition()
+    {
+        return gcnew VectorUE4(m_Instance->GetCameraPosition());
+    }
+
+    VectorUE4^ SotCore::GetCameraRotation()
+    {
+        return gcnew VectorUE4(m_Instance->GetCameraRotation());
+    }
+
     array<UE4Actor^>^ SotCore::GetActors()
     {
         auto actors = m_Instance->getActors();

@@ -64,4 +64,14 @@ namespace SoT
 		return gcnew System::String("None");
 	}
 
+	System::Boolean^ UE4Actor::operator==(UE4Actor^ act)
+	{
+		return this->getActor() == act->getActor();
+	}
+
+	System::Boolean^ UE4Actor::operator!=(UE4Actor^ act)
+	{
+		return this->getActor() != act->getActor();
+	}
+
 }

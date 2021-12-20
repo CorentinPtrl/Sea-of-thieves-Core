@@ -13,6 +13,8 @@ namespace SoT
 		System::String^ getName();
 		VectorUE4^ UE4Actor::getPos();
 		VectorUE4^ UE4Actor::getRot();
+		System::Boolean^ operator==(UE4Actor^ act);
+		System::Boolean^ operator!=(UE4Actor^ act);
 		System::String^ BaseName;
 		System::Int32^ IDActors;
 	};

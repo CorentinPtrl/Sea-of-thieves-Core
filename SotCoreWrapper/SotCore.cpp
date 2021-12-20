@@ -129,6 +129,39 @@ namespace Core
 		return actor;
 	}
 
+	float SotCore::GetCameraFOV()
+	{
+		auto gameWorld = MemoryManager->Read<cUWorld>(MemoryManager->Read<uintptr_t>(Core::UWorld));
+		auto LP = gameWorld.GetGameInstance().GetLocalPlayer();
+		auto LPController = LP.GetPlayerController();
+		auto LPCameraManager = LPController.GetCameraManager();
+		SOT->localCamera.fov = LPCameraManager.GetCameraFOV();
+		return SOT->localCamera.fov;
+	}
+
+	Vector3 SotCore::GetCameraRotation()
+	{
+		auto gameWorld = MemoryManager->Read<cUWorld>(MemoryManager->Read<uintptr_t>(Core::UWorld));
+		auto LP = gameWorld.GetGameInstance().GetLocalPlayer();
+		auto LPController = LP.GetPlayerController();
+		auto LPCameraManager = LPController.GetCameraManager();
+		SOT->localCamera.angles = LPCameraManager.GetCameraRotation();
+		return  LPCameraManager.GetCameraRotation();
+	}
+
+
+	Vector3 SotCore::GetCameraPosition()
+	{
+		auto gameWorld = MemoryManager->Read<cUWorld>(MemoryManager->Read<uintptr_t>(Core::UWorld));
+		auto LP = gameWorld.GetGameInstance().GetLocalPlayer();
+		auto LPController = LP.GetPlayerController();
+		auto LPCameraManager = LPController.GetCameraManager();
+		SOT->localCamera.angles = LPCameraManager.GetCameraRotation();
+		return  LPCameraManager.GetCameraRotation();
+	}
+
+
+
 	std::vector<AActor> SotCore::getActors()
 	{
 		auto gameWorld = MemoryManager->Read<cUWorld>(MemoryManager->Read<uintptr_t>(Core::UWorld));

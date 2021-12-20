@@ -15,6 +15,9 @@ namespace SoT
         SotCore();
         bool Prepare(System::Boolean^ IsSteam);
         UE4Actor^ GetLocalPlayer();
+        System::Single^ SotCore::GetCameraFOV();
+        VectorUE4^ GetCameraRotation();
+        VectorUE4^ GetCameraPosition();
         array<UE4Actor^>^ GetActors();
     };
 }
