@@ -7,9 +7,12 @@ namespace SoT
 	public ref class UE4Actor
 	{
 	private:
+		VectorUE4^ pos;
+		VectorUE4^ rot;
 		bool isValid();
 		AActor UE4Actor::getActor();
 	public:
+		UE4Actor(std::string BaseName, int IDActors);
 		System::String^ getName();
 		VectorUE4^ UE4Actor::getPos();
 		VectorUE4^ UE4Actor::getRot();

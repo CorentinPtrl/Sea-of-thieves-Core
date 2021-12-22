@@ -8,6 +8,8 @@ namespace SotEspCoreTest
 
         public static string convertVecToStr(VectorUE4 vec)
         {
+            if (vec == null)
+                return "NULL";
             return "(X: " + vec.getX() + " Y: " + vec.getY() + " Z: " + vec.getZ() + ")";
         }
         static void Main(string[] args)
@@ -21,7 +23,12 @@ namespace SotEspCoreTest
                     Console.WriteLine("Name : " + actor.BaseName + " | Actual Name :" + actor.getName() + " Pos :" + convertVecToStr(actor.getPos()));
                 }
                 UE4Actor localPlayer = core.GetLocalPlayer();
-                Console.WriteLine("LocalPlayer Name : " + localPlayer.BaseName + " | LocalPlayer Actual Name :" + localPlayer.getName() + " LocalPlayer Pos :" + convertVecToStr(localPlayer.getPos()));
+                int i = 1;
+                while (true)
+                {
+                    Console.WriteLine("LocalPlayer Name : {0} | LocalPlayer Actual Name : {1} LocalPlayer Pos : {2} index = {3}", localPlayer.BaseName, localPlayer.getName(), convertVecToStr(localPlayer.getPos()), i);
+                    i++;
+                }
             }
         }
     }        

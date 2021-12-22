@@ -23,7 +23,7 @@ namespace SoT
 
     UE4Actor^ SotCore::GetLocalPlayer()
     {
-        return m_Instance->ActorToManaged(-1, m_Instance->getLocalPlayer());
+        return gcnew UE4Actor(m_Instance->getNameFromIDmem(m_Instance->getLocalPlayer().GetID()), -1);
     }
 
     System::Single^ SotCore::GetCameraFOV()
@@ -48,7 +48,8 @@ namespace SoT
 
         for (int i = 0; i < actors.size(); i++)
         {
-            list[i] = m_Instance->ActorToManaged(i, actors[i]);
+            SoT::UE4Actor^ act = gcnew SoT::UE4Actor(m_Instance->getNameFromIDmem(actors[i].GetID()), i);
+            list[i] = act;
         }
         return list;
     }

@@ -25,8 +25,5 @@ namespace Core
 		Vector3 GetCameraPosition();
 		std::vector<AActor> getActors();
 		std::string getNameFromIDmem(int ID);
-		SoT::UE4Actor^ ActorToManaged(int id, AActor actor);
-
-
 	};
 }

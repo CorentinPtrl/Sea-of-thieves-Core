@@ -7,6 +7,11 @@ namespace SoT
 
 	}
 
+	void VectorUE4::updateInstance(Vector3 vec)
+	{
+		this->m_Instance = &vec;
+	}
+
 	float VectorUE4::getX()
 	{
 		return this->m_Instance->x;

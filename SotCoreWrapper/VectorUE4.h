@@ -8,6 +8,7 @@ namespace SoT
 	{
 	public:
 		VectorUE4(Vector3 vec);
+		void VectorUE4::updateInstance(Vector3 vec);
 		float getX();
 		float getY();
 		float getZ();

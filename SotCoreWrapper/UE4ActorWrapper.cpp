@@ -7,6 +7,12 @@ using namespace msclr::interop;
 namespace SoT
 {
 
+	UE4Actor::UE4Actor(std::string BaseName, int IDActors)
+	{
+		this->BaseName = gcnew System::String(BaseName.c_str());
+		this->IDActors = gcnew System::Int32(IDActors);
+	}
+
 	std::string ToUnmanagedString(String^ stringIncoming)
 	{
 		std::string unmanagedString = marshal_as<std::string>(stringIncoming);
@@ -39,8 +45,20 @@ namespace SoT
 	{
 		if (isValid())
 		{
-
-			return gcnew VectorUE4(getActor().GetRootComponent().GetPosition());
+			if (this->pos == nullptr)
+			{
+				this->pos = gcnew VectorUE4(getActor().GetRootComponent().GetPosition());
+				return pos;
+			}
+			else if (*(uintptr_t*)(this->pos->GetInstance()) == *(uintptr_t*)(&getActor().GetRootComponent().GetPosition()))
+			{
+				return this->pos;
+			}
+			else
+			{
+				this->pos->updateInstance(getActor().GetRootComponent().GetPosition());
+				return pos;
+			}
 		}
 	}
 
@@ -48,8 +66,20 @@ namespace SoT
 	{
 		if (isValid())
 		{
-
-			return gcnew VectorUE4(getActor().GetRootComponent().GetRotation());
+			if (this->rot == nullptr)
+			{
+				this->rot = gcnew VectorUE4(getActor().GetRootComponent().GetRotation());
+				return rot;
+			}
+			else if (*(uintptr_t*)(this->rot->GetInstance()) == *(uintptr_t*)(&getActor().GetRootComponent().GetRotation()))
+			{
+				return this->rot;
+			}
+			else
+			{
+				this->rot->updateInstance(getActor().GetRootComponent().GetRotation());
+				return rot;
+			}
 		}
 	}
 

@@ -181,14 +181,5 @@ namespace Core
 		TempActors = actors;
 		return actors;
 	}
-
-	 SoT::UE4Actor^ SotCore::ActorToManaged(int id, AActor actor)
-	{
-		 SoT::UE4Actor^ act = gcnew SoT::UE4Actor;
-		 act->BaseName = gcnew System::String(getNameFromIDmem(actor.GetID()).c_str());
-		 act->IDActors = gcnew System::Int32(id);
-		 return act;
-	}
-
 }
 
