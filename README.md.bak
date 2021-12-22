@@ -28,7 +28,7 @@ else
 ```C#
 SotCore core = new SotCore();
 //if u are in steam version replace by true
-if (core.Prepare(false))
+if (core.Prepare())
 {
     UE4Actor localPlayer = core.GetLocalPlayer();
     //Do your things here
