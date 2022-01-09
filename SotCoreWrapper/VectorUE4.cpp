@@ -72,4 +72,9 @@ namespace SoT
 		return gcnew System::Boolean(this->m_Instance->IsZero());
 	}
 
+	String^ VectorUE4::ToString()
+	{
+		return "(X : " + getX() + " Y: " + getY() + " Z: " + getZ() + ")";
+	}
+
 }

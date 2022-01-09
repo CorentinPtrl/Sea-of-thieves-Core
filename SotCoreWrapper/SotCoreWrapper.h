@@ -4,6 +4,7 @@
 #include "ManagedObject.h"
 #include "UE4ActorWrapper.h"
 #include "VectorUE4.h"
+#include "CameraManager.h"
 #include "process_manager.h"
 
 using namespace System;
@@ -15,9 +16,7 @@ namespace SoT
         SotCore();
         bool Prepare(System::Boolean^ IsSteam);
         UE4Actor^ GetLocalPlayer();
-        System::Single^ SotCore::GetCameraFOV();
-        VectorUE4^ GetCameraRotation();
-        VectorUE4^ GetCameraPosition();
+        CameraManager^ GetCameraManager();
         array<UE4Actor^>^ GetActors();
     };
 }

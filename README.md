@@ -38,4 +38,21 @@ else
     //Failed, Sea of thieves not detected
 }
 ```
+
+#### Get Camera Manager
+
+```C#
+SotCore core = new SotCore();
+//if u are in steam version replace by true
+if (core.Prepare(false))
+{
+    CameraManager cameraManager = core.GetCameraManager();
+    //Do your things here
+}
+else
+{
+    //Failed, Sea of thieves not detected
+}
+```
+
 #### And if you want some help feel free to join the [discord](https://discord.gg/KkBVKCFdzz)

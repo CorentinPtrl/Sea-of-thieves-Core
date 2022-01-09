@@ -26,19 +26,9 @@ namespace SoT
         return gcnew UE4Actor(m_Instance->getNameFromIDmem(m_Instance->getLocalPlayer().GetID()), -1);
     }
 
-    System::Single^ SotCore::GetCameraFOV()
+    CameraManager^ SotCore::GetCameraManager()
     {
-        return gcnew System::Single(m_Instance->GetCameraFOV());
-    }
-
-    VectorUE4^ SotCore::GetCameraPosition()
-    {
-        return gcnew VectorUE4(m_Instance->GetCameraPosition());
-    }
-
-    VectorUE4^ SotCore::GetCameraRotation()
-    {
-        return gcnew VectorUE4(m_Instance->GetCameraRotation());
+        return gcnew CameraManager(m_Instance->GetCameraManager());
     }
 
     array<UE4Actor^>^ SotCore::GetActors()

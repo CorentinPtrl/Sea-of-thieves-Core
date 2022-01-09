@@ -21,10 +21,7 @@ namespace SoT
 		float Dot(VectorUE4^ v);
 		VectorUE4^ Cross(VectorUE4^ v);
 		System::Boolean^ IsZero();
-
-		virtual String^ ToString() override
-		{
-			return "(X : " + getX() + " Y: " + getY() + " Z: " + getZ()+")";
-		}
+		String^ ToString() new;
+		
 	};
 }

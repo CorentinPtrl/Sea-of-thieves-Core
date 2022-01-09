@@ -121,6 +121,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CameraManager.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="SotCore.h" />
     <ClInclude Include="globals.h" />
@@ -137,6 +138,7 @@
     <ClInclude Include="VectorUE4.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="SotCore.cpp" />
     <ClCompile Include="globals.cpp" />

@@ -8,23 +8,20 @@ namespace SotEspCoreTest
         static void Main(string[] args)
         {
             SotCore core = new SotCore();
-            
             if (core.Prepare(false))
             {
                 UE4Actor[] actors = core.GetActors();
                 foreach (UE4Actor actor in actors)
                 {
-                    Console.WriteLine("Name : {0} | Actual Name : {1} Pos : {2} Rot : {3}", actor.BaseName, actor.getName(), actor.getPos(), actor.getRot());
+                    Console.WriteLine("Name : {0}  | Actual Name : {1} Pos : {2} Rot : {3}", actor.BaseName, actor.getName(), actor.getPos().ToString(), actor.getRot().ToString());
                 }
                 UE4Actor localPlayer = core.GetLocalPlayer();
-                int i = 1;
-                while (true)
-                {
-                    Console.WriteLine("LocalPlayer Name : {0} | LocalPlayer Actual Name : {1} LocalPlayer Pos : {2} LocalPLayer Rot : {3} index = {4}", localPlayer.BaseName, localPlayer.getName(), localPlayer.getPos(),localPlayer.getRot(), i);
-                    i++;
-                }
+
+                Console.WriteLine("LocalPlayer Name : {0} | LocalPlayer Actual Name : {1} LocalPlayer Pos : {2} LocalPlayer Rot : {3}", localPlayer.BaseName, localPlayer.getName(), localPlayer.getPos().ToString(), localPlayer.getRot().ToString());
+
+                CameraManager cameraManager = core.GetCameraManager();
+                Console.WriteLine("Camera Manager | Pos : {0}  Rot : {1}  FOV {2}", cameraManager.getPos().ToString(), cameraManager.getRot().ToString(), cameraManager.getFOV());
             }
         }
-    }        
-    
-}
+    }
+}        

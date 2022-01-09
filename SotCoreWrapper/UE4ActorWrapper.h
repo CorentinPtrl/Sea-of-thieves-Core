@@ -2,6 +2,7 @@
 #include <string>
 #include "VectorUE4.h"
 using namespace System;
+using namespace Core;
 namespace SoT
 {
 	public ref class UE4Actor
