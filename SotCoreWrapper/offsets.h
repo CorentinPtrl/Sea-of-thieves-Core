@@ -37,8 +37,8 @@ namespace Core
 			int actorId = 0x18;
 			int rootComponent = 0x170;
 			int PlayerState = 0x3F0;
-			int WieldedItemComponent = 0x810;
-			int HealthComponent = 0x838;
+			int WieldedItemComponent = 2096;
+			int HealthComponent = 2136;
 			int DrowningComponent = 0xCA8;
 		}AActor;
 
@@ -54,18 +54,18 @@ namespace Core
 
 		struct AItemProxy
 		{
-			int AItemInfo = 0x5B0;
+			int AItemInfo = 1816;
 		}AItemProxy;
 
 		struct AItemInfo
 		{
-			int UItemDesc = 0x438;
+			int UItemDesc = 1072;
 		}AItemInfo;
 
 		struct ABootyItemInfo
 		{
 			int BootyType = 0x528;
-			int Rarity = 0x6A4;
+			int Rarity = 1692;
 		}ABootyItemInfo;
 
 		struct AShip
@@ -90,14 +90,14 @@ namespace Core
 
 		struct AFauna
 		{
-			int Name = 0x7F8;
+			int Name = 2056;
 		}AFauna;
 
 		struct AMaptTable
 		{
 			int ServerCenter = 0x4C0;
 			int MapPins = 0x4E0;
-			int TrackedShips = 0x4F0;
+			int TrackedShips = 1156;
 		}AMapTable;
 
 		struct ACrewService
@@ -107,12 +107,12 @@ namespace Core
 
 		struct UWieldedItemComponent
 		{
-			int WieldedItem = 0x2B8;
+			int WieldedItem = 1192;
 		}UWieldedItemComponent;
 
 		struct AWieldableItem
 		{
-			int ItemInfo = 0x6F8;
+			int ItemInfo = 1816;
 		}AWieldableItem;
 	};
 	extern offsets Offsets;
