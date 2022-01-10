@@ -1,11 +1,15 @@
 #include "pch.h"
 #include "Core.h"
 #include "UE4ActorWrapper.h"
-#include <msclr\marshal_cppstd.h>
-using namespace msclr::interop;
 
 namespace SoT
 {
+
+	UE4Actor::UE4Actor(UE4Actor^ actor)
+	{
+		this->BaseName = actor->BaseName;
+		this->IDActors = actor->IDActors;
+	}
 
 	UE4Actor::UE4Actor(std::string BaseName, int IDActors)
 	{

@@ -151,7 +151,6 @@ namespace Core
 			auto objectActor = *reinterpret_cast<AActor*>(&worldActors[i]);
 			auto objectID = objectActor.GetID();
 			auto objectName = getNameFromIDmem(objectID);
-;
 			actors.push_back(objectActor);
 		}
 		TempActors = actors;

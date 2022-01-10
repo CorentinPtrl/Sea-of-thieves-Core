@@ -5,6 +5,7 @@
 #include "UE4ActorWrapper.h"
 #include "VectorUE4.h"
 #include "CameraManager.h"
+#include "Player.h"
 #include "process_manager.h"
 
 using namespace System;

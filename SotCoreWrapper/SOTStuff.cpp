@@ -49,7 +49,7 @@ namespace Core
 
 	TArray<struct FIsland> AActor::GetIslandarray()
 	{
-		return MemoryManager->Read< TArray<struct FIsland>>(*(uintptr_t*)(__pad0x0 + 0x523A));
+		return MemoryManager->Read< TArray<struct FIsland>>(*(uintptr_t*)(__pad0x0 + 0x0470));
 	}
 
 	UDrowningComponent ACharacter::GetDrowningComponent()

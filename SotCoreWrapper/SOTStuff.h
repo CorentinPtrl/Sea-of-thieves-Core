@@ -268,6 +268,36 @@ namespace Core
 		char __pad0x0[0x1000];
 	};
 
+	struct FIsland
+	{
+		int                                       IslandNameId;
+		char __pad0x4[0x4];
+		byte                           IslandType;
+		unsigned char                                      UnknownData00[0x7];
+		char __pad0x10[0x8];
+		Vector3                                    IslandBoundsCentre;
+		float                                              IslandBoundsRadius;
+		float                                              IslandTriggerRadius;
+		float                                              IslandSafeZoneRadius;
+		char __pad0x30[0x38];
+	};
+
+	class AIslandService
+	{
+	public:
+		unsigned char                                      UnknownData00[0x88];                                      // 0x03D0(0x0088) MISSED OFFSET
+		unsigned char				                       UnknownData01[0x0008];                                  // 0x0458(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
+		unsigned char				                       UnknownData02[0x0008];                                  // 0x0458(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
+		unsigned char				                       UnknownData03[0x0008];                                  // 0x0458(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
+		unsigned char                                      UnknownData04[0x18];                                      // 0x0470(0x0018) MISSED OFFSET
+		TArray<FIsland>                                    IslandArray;                                              // 0x0488(0x0010) (Net, ZeroConstructor)
+		unsigned char                                      UnknownData05[0x120];                                     // 0x0498(0x0120) MISSED OFFSET
+		unsigned char				                       UnknownData06[0x0010];                                  // 0x0458(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
+		unsigned char				                       UnknownData07[0x0010];                                  // 0x0458(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
+		unsigned char				                       UnknownData08[0x0010];                                  // 0x0458(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
+		unsigned char                                      UnknownData09[0x8];                                       // 0x05E8(0x0008) MISSED OFFSET
+	};
+
 	class AActor
 	{
 	public:

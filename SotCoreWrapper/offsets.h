@@ -107,7 +107,7 @@ namespace Core
 
 		struct UWieldedItemComponent
 		{
-			int WieldedItem = 1192;
+			int WieldedItem = 696;
 		}UWieldedItemComponent;
 
 		struct AWieldableItem

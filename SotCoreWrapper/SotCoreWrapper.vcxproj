@@ -123,6 +123,7 @@
   <ItemGroup>
     <ClInclude Include="CameraManager.h" />
     <ClInclude Include="Core.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="SotCore.h" />
     <ClInclude Include="globals.h" />
     <ClInclude Include="ManagedObject.h" />
@@ -140,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="SotCore.cpp" />
     <ClCompile Include="globals.cpp" />
     <ClCompile Include="MemoryManager.cpp" />
