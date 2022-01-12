@@ -39,7 +39,7 @@ namespace Core
 			int PlayerState = 0x3F0;
 			int WieldedItemComponent = 2096;
 			int HealthComponent = 2136;
-			int DrowningComponent = 0xCA8;
+			int DrowningComponent = 0x0D68;
 		}AActor;
 
 		struct APlayerState

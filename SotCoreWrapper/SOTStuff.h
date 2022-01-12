@@ -403,7 +403,7 @@ namespace Core
 	class USinkingComponent
 	{
 	public:
-		unsigned char                                      UnknownData00[0x00C8];
+		unsigned char                                      UnknownData00[0x00D0];
 		FSinkingShipParams                                 SinkingParams;
 	};
 

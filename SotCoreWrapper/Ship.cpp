@@ -27,7 +27,6 @@ namespace SoT
     float Ship::getMinSpdToStopToBeforeLowering()
     {
         return getActor().GetSinkingComponent().SinkingParams.MinSpdToStopToBeforeLowering;
-
     }
 
     float Ship::getLowerIntoWaterTime()
