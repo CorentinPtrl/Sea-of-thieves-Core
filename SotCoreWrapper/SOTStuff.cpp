@@ -188,6 +188,12 @@ namespace Core
 		return *(uintptr_t*)(__pad0x0 + Offsets.AShip.ShipOwningActor);
 	}
 
+	USinkingComponent AShip::GetSinkingComponent()
+	{
+		return MemoryManager->Read<USinkingComponent>(*(uintptr_t*)(__pad0x0 + Offsets.AShip.SinkingComponent));
+	}
+
+
 	TArray<struct FXMarksTheSpotMapMark> AXMarksTheSpotMap::GetMarks()
 	{
 		return this->Marks;

@@ -382,10 +382,36 @@ namespace Core
 		char __pad0x0[0x100];
 	};
 
+	struct FSinkingShipParams
+	{
+		float                                              DragWhenGrindingToHalt;
+		float                                              MinSpdToStopToBeforeLowering;
+		float                                              LowerIntoWaterTime;
+		float                                              TimeIntoLoweringToStartOcclusionZoneShrinkage;
+		float                                              AngularDragDuringSinkingSequence;
+		float                                              KeeledOverTime;
+		float                                              TurnOffBuoyancyTime;
+		float                                              FinalSinkingBuoyancy;
+		float                                              SinkingTimeUntilDestroy;
+		float                                              ReduceWaterOcclusionZoneTime;
+		float                                              ReduceWaterOcclusionZoneTimeHurryUp;
+		float                                              TimeIntoKeelingOverToTeleportPlayer;
+		float                                              MinSampleSubmersionToConsiderInWater;
+		float                                              MinPctSamplesRequiredSubmergedToBeAbleToSink;
+	};
+
+	class USinkingComponent
+	{
+	public:
+		unsigned char                                      UnknownData00[0x00C8];
+		FSinkingShipParams                                 SinkingParams;
+	};
+
 	public class AShip
 	{
 	public:
 		UCrewOwnershipComponent GetCrewOwnershipComponent();
+		USinkingComponent GetSinkingComponent();
 		uintptr_t GetOwningActor();
 	private:
 		char __pad0x0[0x1000];

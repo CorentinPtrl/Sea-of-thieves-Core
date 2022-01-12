@@ -72,6 +72,7 @@ namespace Core
 		{
 			int CrewOwnershipComponent = 1888;
 			int ShipInternalWaterComponent = 0x05E0;
+			int SinkingComponent = 0x05F0;
 			int ShipOwningActor = 0x3E0;
 		}AShip;
 

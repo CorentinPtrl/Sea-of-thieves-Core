@@ -14,6 +14,20 @@ namespace SoT
     public:
         Ship(UE4Actor^ actor);
         Guid^ getGuid();
+        float getDragWhenGrindingToHalt();
+        float getMinSpdToStopToBeforeLowering();
+        float getLowerIntoWaterTime();
+        float getTimeIntoLoweringToStartOcclusionZoneShrinkage();
+        float getAngularDragDuringSinkingSequence();
+        float getKeeledOverTime();
+        float getTurnOffBuoyancyTime();
+        float getFinalSinkingBuoyancy();
+        float getSinkingTimeUntilDestroy();
+        float getReduceWaterOcclusionZoneTime();
+        float getReduceWaterOcclusionZoneTimeHurryUp();
+        float getTimeIntoKeelingOverToTeleportPlayer();
+        float getMinSampleSubmersionToConsiderInWater();
+        float getMinPctSamplesRequiredSubmergedToBeAbleToSink();
     };
 }
 
