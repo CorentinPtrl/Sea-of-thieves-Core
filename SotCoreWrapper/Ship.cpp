@@ -19,6 +19,21 @@ namespace SoT
 		return gcnew SoT::Guid(getActor().GetCrewOwnershipComponent().GetCrewId());
 	}
 
+    float Ship::getCurrentWaterLevel()
+    {
+        UChildActorComponent component = getActor().getChildActorComponent();
+        AShipInternalWater internalWater = *reinterpret_cast<AShipInternalWater*>(&component.getChildActor());
+        return internalWater.CurrentVisualWaterLevel;
+    }
+
+    float Ship::getCurrentWaterAmount()
+    {
+        UChildActorComponent component = getActor().getChildActorComponent();
+        AShipInternalWater internalWater = *reinterpret_cast<AShipInternalWater*>(&component.getChildActor());
+        return internalWater.WaterAmount;
+    }
+
+
     float Ship::getDragWhenGrindingToHalt()
     {
         return getActor().GetSinkingComponent().SinkingParams.DragWhenGrindingToHalt;

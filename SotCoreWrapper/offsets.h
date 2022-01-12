@@ -71,10 +71,15 @@ namespace Core
 		struct AShip
 		{
 			int CrewOwnershipComponent = 1888;
-			int ShipInternalWaterComponent = 0x05E0;
 			int SinkingComponent = 0x05F0;
 			int ShipOwningActor = 0x3E0;
+			int ShipInternalWaterComponent = 0x05E8;
 		}AShip;
+
+		struct UChildActorComponent
+		{
+			int ChildActor = 0x02B8;
+		}UChildActorComponent;
 
 		struct ACannon
 		{

@@ -14,6 +14,10 @@ namespace SoT
     public:
         Ship(UE4Actor^ actor);
         Guid^ getGuid();
+        
+        float getCurrentWaterLevel();
+        float getCurrentWaterAmount();
+
         float getDragWhenGrindingToHalt();
         float getMinSpdToStopToBeforeLowering();
         float getLowerIntoWaterTime();
@@ -28,6 +32,7 @@ namespace SoT
         float getTimeIntoKeelingOverToTeleportPlayer();
         float getMinSampleSubmersionToConsiderInWater();
         float getMinPctSamplesRequiredSubmergedToBeAbleToSink();
+
     };
 }
 

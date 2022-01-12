@@ -382,6 +382,14 @@ namespace Core
 		char __pad0x0[0x100];
 	};
 
+	class UChildActorComponent
+	{
+	public:
+		AActor getChildActor();
+	private:
+		char __pad0x0[0x1000];
+	};
+
 	struct FSinkingShipParams
 	{
 		float                                              DragWhenGrindingToHalt;
@@ -413,6 +421,8 @@ namespace Core
 		UCrewOwnershipComponent GetCrewOwnershipComponent();
 		USinkingComponent GetSinkingComponent();
 		uintptr_t GetOwningActor();
+		UChildActorComponent getChildActorComponent();
+
 	private:
 		char __pad0x0[0x1000];
 	};
@@ -424,6 +434,15 @@ namespace Core
 	private:
 		char __pad0xA0[0xA0];
 		TArray<Chunk*> m_Actors;
+	};
+
+
+	class AShipInternalWater
+	{
+	public:
+		unsigned char                                      UnknownData00[0x0418];
+		float                                              CurrentVisualWaterLevel;
+		float                                              WaterAmount;
 	};
 
 	class AFauna

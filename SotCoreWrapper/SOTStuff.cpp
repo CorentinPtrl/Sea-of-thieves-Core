@@ -183,6 +183,18 @@ namespace Core
 		return MemoryManager->Read<UCrewOwnershipComponent>(*(uintptr_t*)(__pad0x0 + Offsets.AShip.CrewOwnershipComponent));
 	}
 
+	UChildActorComponent AShip::getChildActorComponent()
+	{
+		return MemoryManager->Read<UChildActorComponent>(*(uintptr_t*)(__pad0x0 + Offsets.AShip.ShipInternalWaterComponent));
+	}
+
+	AActor UChildActorComponent::getChildActor()
+	{
+		return MemoryManager->Read<AActor>(*(uintptr_t*)(__pad0x0 + Offsets.UChildActorComponent.ChildActor));
+	}
+
+
+
 	uintptr_t AShip::GetOwningActor()
 	{
 		return *(uintptr_t*)(__pad0x0 + Offsets.AShip.ShipOwningActor);

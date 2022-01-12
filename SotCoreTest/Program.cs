@@ -19,6 +19,7 @@ namespace SotEspCoreTest
                     if (actor.getName().Equals("BP_SmallShipTemplate_C") || actor.getName().Equals("BP_SmallShipNetProxy") || actor.getName().Equals("BP_MediumShipTemplate_C") || actor.getName().Equals("BP_MediumShipNetProxy") || actor.getName().Equals("BP_LargeShipTemplate_C") || actor.getName().Equals("BP_LargeShipNetProxy") || actor.getName().Equals("BP_Rowboat_C") || actor.getName().Equals("BP_RowboatRowingSeat_C") || actor.getName().Equals("BP_RowboatRowingSeat_C") || actor.getName().Equals("BP_Rowboat_WithFrontHarpoon_C"))
                     {
                         Ship ship = new Ship(actor);
+                        float CurrentWaterLevel = ship.getCurrentWaterLevel();
                         Console.WriteLine("Ship");
                     }
                     /*else if(actor.getName().Contains("Proxy") && !actor.getName().Contains("NetProxy"))
