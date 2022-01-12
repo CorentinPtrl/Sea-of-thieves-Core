@@ -44,7 +44,7 @@ namespace Core
 
 		struct APlayerState
 		{
-			int PlayerName = 0x3D8;
+			int PlayerName = 984;
 		}APlayerState;
 
 		struct APlayerCameraManager
@@ -70,7 +70,7 @@ namespace Core
 
 		struct AShip
 		{
-			int CrewOwnershipComponent = 0x760;
+			int CrewOwnershipComponent = 1888;
 			int ShipInternalWaterComponent = 0x05E0;
 			int ShipOwningActor = 0x3E0;
 		}AShip;
@@ -85,7 +85,7 @@ namespace Core
 
 		struct UCrewOwnershipComponent
 		{
-			int CrewId = 0xD4;
+			int CrewId = 212;
 		}UCrewOwnershipComponent;
 
 		struct AFauna
@@ -102,7 +102,7 @@ namespace Core
 
 		struct ACrewService
 		{
-			int Crews = 0x4A8;
+			int Crews = 1192;
 		}ACrewService;
 
 		struct UWieldedItemComponent

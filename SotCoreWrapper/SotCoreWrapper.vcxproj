@@ -123,7 +123,12 @@
   <ItemGroup>
     <ClInclude Include="CameraManager.h" />
     <ClInclude Include="Core.h" />
+    <ClInclude Include="Crew.h" />
+    <ClInclude Include="CrewService.h" />
+    <ClInclude Include="Guid.h" />
+    <ClInclude Include="ItemProxy.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Ship.h" />
     <ClInclude Include="SotCore.h" />
     <ClInclude Include="globals.h" />
     <ClInclude Include="ManagedObject.h" />
@@ -141,7 +146,12 @@
   <ItemGroup>
     <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Crew.cpp" />
+    <ClCompile Include="CrewService.cpp" />
+    <ClCompile Include="Guid.cpp" />
+    <ClCompile Include="ItemProxy.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Ship.cpp" />
     <ClCompile Include="SotCore.cpp" />
     <ClCompile Include="globals.cpp" />
     <ClCompile Include="MemoryManager.cpp" />

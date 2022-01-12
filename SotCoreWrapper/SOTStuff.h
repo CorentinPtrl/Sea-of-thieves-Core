@@ -22,7 +22,7 @@ namespace Core
 		wchar_t word[64];
 	};
 
-	struct FGuid
+	public struct FGuid
 	{
 		int A; // 0x0000(0x0004) (Edit, ZeroConstructor, SaveGame, IsPlainOldData)
 		int B; // 0x0004(0x0004) (Edit, ZeroConstructor, SaveGame, IsPlainOldData)
@@ -350,7 +350,7 @@ namespace Core
 
 	private:
 		FGuid CrewID;
-		char __pad0x10[0x10];
+		FGuid SessionId;
 		TArray<class APlayerState*> Players;
 		char __pad0x30[0x30];
 		int maxPlayersOnShip;
@@ -374,7 +374,7 @@ namespace Core
 		char __pax0x0[0x1000];
 	};
 
-	class UCrewOwnershipComponent
+	public class UCrewOwnershipComponent
 	{
 	public:
 		FGuid GetCrewId();
@@ -382,7 +382,7 @@ namespace Core
 		char __pad0x0[0x100];
 	};
 
-	class AShip
+	public class AShip
 	{
 	public:
 		UCrewOwnershipComponent GetCrewOwnershipComponent();

@@ -147,7 +147,10 @@ namespace Core
 		}
 	}
 
-
+	FGuid FCrew::GetCrewID()
+	{
+		return this->CrewID;
+	}
 
 	std::wstring APlayerState::GetName()
 	{
@@ -169,6 +172,11 @@ namespace Core
 		return this->oxygenLevel;
 	}
 
+
+	FGuid UCrewOwnershipComponent::GetCrewId()
+	{
+		return *(FGuid*)(__pad0x0 + Offsets.UCrewOwnershipComponent.CrewId);
+	}
 
 	UCrewOwnershipComponent AShip::GetCrewOwnershipComponent()
 	{
