@@ -28,7 +28,10 @@ namespace SoT
 
     CameraManager^ SotCore::GetCameraManager()
     {
-        return gcnew CameraManager(m_Instance->GetCameraManager());
+        if (!cameraManager)
+            cameraManager = gcnew CameraManager(m_Instance->GetCameraManager());
+        cameraManager->UpdateInstance(&m_Instance->GetCameraManager());
+        return cameraManager;
     }
 
     array<UE4Actor^>^ SotCore::GetActors()

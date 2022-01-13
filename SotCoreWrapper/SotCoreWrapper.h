@@ -13,6 +13,8 @@ namespace SoT
 {
     public ref class SotCore : public ManagedObject<Core::SotCore>
     {
+    private:
+        CameraManager^ cameraManager;
     public:
         SotCore();
         bool Prepare(System::Boolean^ IsSteam);

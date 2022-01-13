@@ -31,5 +31,13 @@ namespace SoT {
         {
             return m_Instance;
         }
+
+        void UpdateInstance(T* newInstance)
+        {
+            if ((*(uintptr_t*)m_Instance) != *(uintptr_t*)newInstance)
+            {
+                m_Instance = newInstance;
+            }
+        }
     };
 }
