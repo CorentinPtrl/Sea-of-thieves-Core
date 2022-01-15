@@ -16,123 +16,132 @@
     <Filter Include="Fichiers sources\Core">
       <UniqueIdentifier>{1887c3ef-05b8-4037-bf5e-3648f9af1147}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core">
+      <UniqueIdentifier>{8a69faa8-a66b-484e-9bec-3906894624bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Managed">
+      <UniqueIdentifier>{b64d020e-8890-4c46-b94e-c49f005f7271}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Managed">
+      <UniqueIdentifier>{9a8cd16b-95e3-40bf-ba6a-8b1c51eec25c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Core.h">
+      <Filter>Fichiers d%27en-tête\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SotCore.h">
+      <Filter>Fichiers d%27en-tête\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SOTStuff.h">
+      <Filter>Fichiers d%27en-tête\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="vector.h">
+      <Filter>Fichiers d%27en-tête\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="globals.h">
+      <Filter>Fichiers d%27en-tête\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="offsets.h">
+      <Filter>Fichiers d%27en-tête\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="process_manager.h">
+      <Filter>Fichiers d%27en-tête\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryManager.h">
+      <Filter>Fichiers sources\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraManager.h">
+      <Filter>Fichiers d%27en-tête\Managed</Filter>
+    </ClInclude>
+    <ClInclude Include="Crew.h">
+      <Filter>Fichiers d%27en-tête\Managed</Filter>
+    </ClInclude>
+    <ClInclude Include="CrewService.h">
+      <Filter>Fichiers d%27en-tête\Managed</Filter>
+    </ClInclude>
+    <ClInclude Include="Guid.h">
+      <Filter>Fichiers d%27en-tête\Managed</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemProxy.h">
+      <Filter>Fichiers d%27en-tête\Managed</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagedSoTObject.h">
+      <Filter>Fichiers d%27en-tête\Managed</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Fichiers d%27en-tête\Managed</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship.h">
+      <Filter>Fichiers d%27en-tête\Managed</Filter>
+    </ClInclude>
     <ClInclude Include="SotCoreWrapper.h">
+      <Filter>Fichiers d%27en-tête\Managed</Filter>
+    </ClInclude>
+    <ClInclude Include="UE4ActorWrapper.h">
+      <Filter>Fichiers d%27en-tête\Managed</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorUE4.h">
+      <Filter>Fichiers d%27en-tête\Managed</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="ManagedSoTObject.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="globals.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="MemoryManager.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="process_manager.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="offsets.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="SOTStuff.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="vector.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="SotCore.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Core.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="VectorUE4.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="UE4ActorWrapper.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraManager.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Ship.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Guid.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="ItemProxy.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="CrewService.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Crew.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SotCoreWrapper.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="AssemblyInfo.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="globals.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="MemoryManager.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Core</Filter>
     </ClCompile>
     <ClCompile Include="process_manager.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="SOTStuff.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Core</Filter>
     </ClCompile>
     <ClCompile Include="SotCore.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Core</Filter>
     </ClCompile>
-    <ClCompile Include="VectorUE4.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="SOTStuff.cpp">
+      <Filter>Fichiers sources\Core</Filter>
     </ClCompile>
-    <ClCompile Include="UE4ActorWrapper.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="globals.cpp">
+      <Filter>Fichiers sources\Core</Filter>
     </ClCompile>
     <ClCompile Include="CameraManager.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Ship.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Guid.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="ItemProxy.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="CrewService.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Managed</Filter>
     </ClCompile>
     <ClCompile Include="Crew.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Managed</Filter>
+    </ClCompile>
+    <ClCompile Include="CrewService.cpp">
+      <Filter>Fichiers sources\Managed</Filter>
+    </ClCompile>
+    <ClCompile Include="Guid.cpp">
+      <Filter>Fichiers sources\Managed</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemProxy.cpp">
+      <Filter>Fichiers sources\Managed</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Fichiers sources\Managed</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship.cpp">
+      <Filter>Fichiers sources\Managed</Filter>
+    </ClCompile>
+    <ClCompile Include="SotCoreWrapper.cpp">
+      <Filter>Fichiers sources\Managed</Filter>
+    </ClCompile>
+    <ClCompile Include="UE4ActorWrapper.cpp">
+      <Filter>Fichiers sources\Managed</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorUE4.cpp">
+      <Filter>Fichiers sources\Managed</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
