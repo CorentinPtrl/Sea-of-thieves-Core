@@ -5,7 +5,7 @@ namespace SoT
 {  
 
     SotCore::SotCore()
-        : ManagedObject(new Core::SotCore())
+        : ManagedSoTObject(new Core::SotCore())
     {
     }
 
@@ -21,9 +21,11 @@ namespace SoT
         }
     }
 
-    UE4Actor^ SotCore::GetLocalPlayer()
+    Player^ SotCore::GetLocalPlayer()
     {
-        return gcnew UE4Actor(m_Instance->getNameFromIDmem(m_Instance->getLocalPlayer().GetID()), -1);
+        if (!localPlayer)
+            localPlayer = gcnew Player(gcnew UE4Actor(m_Instance->getNameFromIDmem(m_Instance->getLocalPlayer().GetID()), -1));
+        return localPlayer;
     }
 
     CameraManager^ SotCore::GetCameraManager()

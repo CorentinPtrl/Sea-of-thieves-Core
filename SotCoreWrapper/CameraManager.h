@@ -1,11 +1,11 @@
 #pragma once
-#include "ManagedObject.h"
+#include "ManagedSoTObject.h"
 #include "SOTStuff.h"
 #include "VectorUE4.h"
 
 namespace SoT
 {
-	public ref class CameraManager : public ManagedObject<Core::APlayerCameraManager>
+	public ref class CameraManager : public ManagedSoTObject<Core::APlayerCameraManager>
 	{
 		private:
 			VectorUE4^ pos;

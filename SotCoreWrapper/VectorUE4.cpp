@@ -2,14 +2,9 @@
 #include "VectorUE4.h"
 namespace SoT
 {
-	VectorUE4::VectorUE4(Vector3 vec) : ManagedObject(&vec)
+	VectorUE4::VectorUE4(Vector3 vec) : ManagedSoTObject(&vec)
 	{
 
-	}
-
-	void VectorUE4::updateInstance(Vector3 vec)
-	{
-		this->m_Instance = &vec;
 	}
 
 	float VectorUE4::getX()

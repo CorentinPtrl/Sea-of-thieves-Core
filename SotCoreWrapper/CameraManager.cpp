@@ -3,7 +3,7 @@
 #include "CameraManager.h"
 namespace SoT
 {
-	CameraManager::CameraManager(Core::APlayerCameraManager act) : ManagedObject(&act)
+	CameraManager::CameraManager(Core::APlayerCameraManager act) : ManagedSoTObject(&act)
 	{
 
 	}
@@ -29,7 +29,7 @@ namespace SoT
 			}
 			else
 			{
-				this->pos->updateInstance(GetInstance()->GetCameraPosition());
+				this->pos->UpdateInstance(&GetInstance()->GetCameraPosition());
 				return pos;
 			}
 		}
@@ -56,7 +56,7 @@ namespace SoT
 			}
 			else
 			{
-				this->rot->updateInstance(GetInstance()->GetCameraRotation());
+				this->rot->UpdateInstance(&GetInstance()->GetCameraRotation());
 				return rot;
 			}
 		}

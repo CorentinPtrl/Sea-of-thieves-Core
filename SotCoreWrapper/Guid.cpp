@@ -2,7 +2,7 @@
 #include "Guid.h"
 namespace SoT
 {
-	Guid::Guid(FGuid guid) : ManagedObject(&guid)
+	Guid::Guid(FGuid guid) : ManagedSoTObject(&guid)
 	{
 
 	}

@@ -131,7 +131,7 @@
     <ClInclude Include="Ship.h" />
     <ClInclude Include="SotCore.h" />
     <ClInclude Include="globals.h" />
-    <ClInclude Include="ManagedObject.h" />
+    <ClInclude Include="ManagedSoTObject.h" />
     <ClInclude Include="MemoryManager.h" />
     <ClInclude Include="offsets.h" />
     <ClInclude Include="pch.h" />

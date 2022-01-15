@@ -60,7 +60,7 @@ namespace SoT
 			}
 			else
 			{
-				this->pos->updateInstance(getActor().GetRootComponent().GetPosition());
+				this->pos->UpdateInstance(&getActor().GetRootComponent().GetPosition());
 				return pos;
 			}
 		}
@@ -81,7 +81,7 @@ namespace SoT
 			}
 			else
 			{
-				this->rot->updateInstance(getActor().GetRootComponent().GetRotation());
+				this->rot->UpdateInstance(&getActor().GetRootComponent().GetRotation());
 				return rot;
 			}
 		}

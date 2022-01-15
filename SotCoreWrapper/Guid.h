@@ -1,11 +1,11 @@
 #pragma once
 #include "SOTStuff.h"
-#include "ManagedObject.h"
+#include "ManagedSoTObject.h"
 using namespace Core;
 
 namespace SoT
 {
-	public ref class Guid : public ManagedObject<FGuid>
+	public ref class Guid : public ManagedSoTObject<FGuid>
 	{
 	public:
 		Guid(FGuid guid);

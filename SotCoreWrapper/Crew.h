@@ -2,7 +2,7 @@
 #include "Core.h"
 #include "Player.h"
 #include "Guid.h"
-#include "ManagedObject.h"
+#include "ManagedSoTObject.h"
 
 using namespace Core;
 namespace SoT

@@ -1,32 +1,19 @@
-//ManagedObject.h
+//ManagedSoTObject.h
 #pragma once
 using namespace System;
 namespace SoT {
 
     template<class T>
-    public ref class ManagedObject
+    public ref class ManagedSoTObject
     {
     protected:
         T* m_Instance;
     public:
-        ManagedObject(T* instance)
+        ManagedSoTObject(T* instance)
             : m_Instance(instance)
         {
         }
-        virtual ~ManagedObject()
-        {
-            if (m_Instance != nullptr)
-            {
-                delete m_Instance;
-            }
-        }
-        !ManagedObject()
-        {
-            if (m_Instance != nullptr)
-            {
-                delete m_Instance;
-            }
-        }
+        
         T* GetInstance()
         {
             return m_Instance;
