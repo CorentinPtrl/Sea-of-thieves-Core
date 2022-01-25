@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31911.196
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SotCoreWrapper", "SotCoreWrapper\SotCoreWrapper.vcxproj", "{E213205C-F9A4-40A7-8321-4E9FC89A371E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SotCoreTest", "SotCoreTest\SotCoreTest.csproj", "{5B2F2218-BEB4-42ED-984C-BCAB1B886283}"
 EndProject
 Global
@@ -17,16 +15,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E213205C-F9A4-40A7-8321-4E9FC89A371E}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{E213205C-F9A4-40A7-8321-4E9FC89A371E}.Debug|x64.ActiveCfg = Debug|x64
-		{E213205C-F9A4-40A7-8321-4E9FC89A371E}.Debug|x64.Build.0 = Debug|x64
-		{E213205C-F9A4-40A7-8321-4E9FC89A371E}.Debug|x86.ActiveCfg = Debug|Win32
-		{E213205C-F9A4-40A7-8321-4E9FC89A371E}.Debug|x86.Build.0 = Debug|Win32
-		{E213205C-F9A4-40A7-8321-4E9FC89A371E}.Release|Any CPU.ActiveCfg = Release|Win32
-		{E213205C-F9A4-40A7-8321-4E9FC89A371E}.Release|x64.ActiveCfg = Release|x64
-		{E213205C-F9A4-40A7-8321-4E9FC89A371E}.Release|x64.Build.0 = Release|x64
-		{E213205C-F9A4-40A7-8321-4E9FC89A371E}.Release|x86.ActiveCfg = Release|Win32
-		{E213205C-F9A4-40A7-8321-4E9FC89A371E}.Release|x86.Build.0 = Release|Win32
 		{5B2F2218-BEB4-42ED-984C-BCAB1B886283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5B2F2218-BEB4-42ED-984C-BCAB1B886283}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B2F2218-BEB4-42ED-984C-BCAB1B886283}.Debug|x64.ActiveCfg = Debug|Any CPU
