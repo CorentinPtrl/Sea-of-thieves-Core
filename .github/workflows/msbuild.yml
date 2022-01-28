@@ -25,11 +25,17 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}
       run: nuget restore ${{env.SOLUTION_FILE_PATH}}
 
-    - name: Build
+    - name: Build x64
       working-directory: ${{env.GITHUB_WORKSPACE}}
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild SotCoreWrapper/SotCoreWrapper.vcxproj /m  /property:Platform=x64
+    - name: Build x86
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      # Add additional options to the MSBuild command line here (like platform or verbosity level).
+      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
+      run: msbuild SotCoreWrapper/SotCoreWrapper.vcxproj /m  /property:Platform=x86
+      
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -40,13 +46,23 @@ jobs:
         release_name: Commit ${{ github.sha }}
         draft: false
         prerelease: true
-    - name: Release Windows Build
-      id: release-win
+    - name: Pre-Release Windows Build x64
+      id: release-win-x64
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: SotCoreWrapper\x64\Debug\SotCoreWrapper.dll
-        asset_name: SotCoreWrapper.dll
+        asset_name: SotCoreWrapper_x64.dll
+        asset_content_type: application/octet-stream
+    - name: Pre-Release Windows Build x86
+      id: release-win-x86
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: SotCoreWrapper\Debug\SotCoreWrapper.dll
+        asset_name: SotCoreWrapper_x64.dll
         asset_content_type: application/octet-stream
