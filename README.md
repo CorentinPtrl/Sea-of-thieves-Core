@@ -1,7 +1,7 @@
 
 # 🏴‍☠️ Sea of Thieves - External C# Library
 Sea of thieves External C# Library, based on [
-SoT External Tool Premium](https://github.com/xTeJk/SoT_External_Tool_Premium)
+RemnantESP](https://github.com/shalzuth/RemnantESP)
 
 ## How to Use
 
