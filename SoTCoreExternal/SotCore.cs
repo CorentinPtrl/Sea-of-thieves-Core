@@ -19,14 +19,6 @@ namespace SoT
             if (Instance == null)
                 Instance = this;
         }
-
-        public String GetName(Int32 i)
-        {
-            var fNamePtr = Memory.ReadProcessMemory<ulong>(GNames + ((UInt64)i / 0x4000) * 0x8);
-            var fName2 = Memory.ReadProcessMemory<ulong>(fNamePtr + (0x8 * ((UInt64)i % 0x4000)));
-            var fName3 = Memory.ReadProcessMemory<String>(fName2 + 0x10);
-            return fName3;
-        }
         public bool Prepare(bool IsSteam)
         {
             Memory = new Memory("SoTGame");
@@ -64,16 +56,16 @@ namespace SoT
                 return false;
         }
 
-        public UEObject[] GetActors()
+        public UE4Actor[] GetActors()
         {
             var Level = new UEObject(Memory.ReadProcessMemory<UInt64>(Memory.ReadProcessMemory<UInt64>(UWorld)+ 0x30));
             Console.WriteLine(Level.ClassName);
             var Actors = new UEObject(Level.Address + 0xA0);
-            UEObject[] result = new UEObject[Actors.Num];
+            UE4Actor[] result = new UE4Actor[Actors.Num];
 
             for (var i = 0u; i < Actors.Num; i++)
             {
-                result[i] = Actors[i];
+                result[i] = new UE4Actor(Actors[i].Address);
             }
 
             return result;

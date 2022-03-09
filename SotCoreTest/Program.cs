@@ -11,10 +11,10 @@ namespace SotEspCoreTest
             SotCore core = new SotCore();
             if (core.Prepare(false))
             {
-                UEObject[] actors = core.GetActors();
-                foreach (UEObject actor in actors)
+                UE4Actor[] actors = core.GetActors();
+                foreach (UE4Actor actor in actors)
                 {
-                    Console.WriteLine(SotCore.Instance.GetName(SotCore.Instance.Memory.ReadProcessMemory<int>(actor.Address + 0x18)));
+                    Console.WriteLine(actor.Name);
                 }
             }
         }
