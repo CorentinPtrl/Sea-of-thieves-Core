@@ -19,6 +19,18 @@ namespace SoT
                 return _className;
             }
         }
+
+        String _parentClassName;
+        public String ParentClassName
+        {
+            get
+            {
+                if (_parentClassName != null) return _parentClassName;
+                _parentClassName = SotCore.Instance.Engine.GetFullName(ParentClassAddr);
+                return _className;
+            }
+        }
+
         static ConcurrentDictionary<UInt64, UInt64> ObjToClass = new ConcurrentDictionary<UInt64, UInt64>();
         UInt64 _classAddr = UInt64.MaxValue;
         public UInt64 ClassAddr
@@ -36,6 +48,18 @@ namespace SoT
                 return _classAddr;
             }
         }
+
+        UInt64 _ParentclassAddr = UInt64.MaxValue;
+        public UInt64 ParentClassAddr
+        {
+            get
+            {
+                if (_ParentclassAddr != UInt64.MaxValue) return _ParentclassAddr;
+                _ParentclassAddr = SotCore.Instance.Memory.ReadProcessMemory<UInt64>(Address + 0x30);
+                return _ParentclassAddr;
+            }
+        }
+
         public UEObject(UInt64 address)
         {
             Address = address;

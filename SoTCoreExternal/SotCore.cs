@@ -22,6 +22,7 @@ namespace SoT
         public bool Prepare(bool IsSteam)
         {
             Memory = new Memory("SoTGame");
+
             if (Memory.Process != null)
             {
                 Engine = new UE4Engine();
@@ -59,7 +60,6 @@ namespace SoT
         public UE4Actor[] GetActors()
         {
             var Level = new UEObject(Memory.ReadProcessMemory<UInt64>(Memory.ReadProcessMemory<UInt64>(UWorld)+ 0x30));
-            Console.WriteLine(Level.ClassName);
             var Actors = new UEObject(Level.Address + 0xA0);
             UE4Actor[] result = new UE4Actor[Actors.Num];
 
