@@ -14,9 +14,10 @@ namespace SotEspCoreTest
                 UE4Actor[] actors = core.GetActors();
                 foreach (UE4Actor actor in actors)
                 {
-                    Console.WriteLine("Name : {0} Class Name : {1} Parent Class Name {2}", actor.Name, actor.ClassName, actor.ParentClassName)
+                    Console.WriteLine("Name : {0} Class Name : {1} Parent Class Name {2}", actor.Name, actor.ClassName, actor.ParentClassName);
+                    Console.WriteLine(actor.Position);
                 }
             }
         }
     }
-}        
+}       
