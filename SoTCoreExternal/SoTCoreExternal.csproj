@@ -83,7 +83,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Player.cs" />
     <Compile Include="SotCore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UE4Actor.cs" />
