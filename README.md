@@ -23,6 +23,7 @@ else
   //Failed, Sea of thieves not detected
 }
 ```
+
 #### Get LocalPlayer
 
 ```C#
@@ -37,6 +38,12 @@ else
 {
     //Failed, Sea of thieves not detected
 }
+```
+
+#### Use Player class With Actor
+All players name are "BP_PlayerPirate_C"
+```C#
+Player player = new Player(actor);
 ```
 
 #### Get Camera Manager
