@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SoT
+namespace SoT.Data
 {
-    public struct Vector3
+    public struct Quaternion
     {
         public float X;
         public float Y;
         public float Z;
+        public float W;
         public override string ToString()
         {
-            return "(X : " + X + " Y: " + Y + " Z: " + Z + ")";
+            return String.Format("(X : {0} Y: {1} Z: {2} W: {3} )", X,Y,Z,W);
         }
     }
 }

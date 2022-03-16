@@ -1,18 +1,16 @@
-﻿using System;
+﻿using SoT.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SoT
+namespace SoT.UE4
 {
     public struct FTransform
     {
-        public float x;
-        public float y;
-        public float z;
-        public float w;
+        public Quaternion Rotation;
         public Vector3 Translation;
         public Vector3 Scale3D;
     };
@@ -81,6 +79,14 @@ namespace SoT
             get
             {
                 return actor.GetRootComponent().transform.Translation;
+            }
+        }
+
+        public Quaternion Rotation
+        {
+            get
+            {
+                return actor.GetRootComponent().transform.Rotation;
             }
         }
 

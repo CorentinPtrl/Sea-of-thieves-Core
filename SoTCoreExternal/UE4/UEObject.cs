@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SoT
+namespace SoT.UE4
 {
     public class UEObject
     {

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading;
 using SoT;
+using SoT.UE4;
+
 namespace SotEspCoreTest
 {
     class Program
