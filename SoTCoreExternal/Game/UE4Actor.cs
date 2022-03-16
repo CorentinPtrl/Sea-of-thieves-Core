@@ -6,40 +6,9 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SoT.UE4
+namespace SoT.Game
 {
-    public struct FTransform
-    {
-        public Quaternion Rotation;
-        public Vector3 Translation;
-        public Vector3 Scale3D;
-    };
-
-    [StructLayout(LayoutKind.Explicit)]
-    public struct SceneComponent
-    {
-        [FieldOffset(0x140)]
-        public FTransform transform;
-    }
-
-    [StructLayout(LayoutKind.Explicit)]
-    public struct AActor
-    {
-        [FieldOffset(0x18)]
-        public int ObjectID;
-
-
-        [FieldOffset(0x170)]
-        private ulong RootComponentPtr;
-
-        public SceneComponent GetRootComponent()
-        {
-            return SotCore.Instance.Memory.ReadProcessMemory<SceneComponent>(RootComponentPtr);
-        }
-    }
-
-
-        public class UE4Actor : UEObject
+    public class UE4Actor : UEObject
     {
         String _Name;
         public String Name
@@ -87,6 +56,14 @@ namespace SoT.UE4
             get
             {
                 return actor.GetRootComponent().transform.Rotation;
+            }
+        }
+
+        public Vector3 Scale
+        {
+            get
+            {
+                return actor.GetRootComponent().transform.Scale3D;
             }
         }
 

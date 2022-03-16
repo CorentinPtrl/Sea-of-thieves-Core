@@ -1,6 +1,6 @@
 ﻿using SoT.Util;
 using System;
-using SoT.UE4;
+using SoT.Game;
 
 namespace SoT
 {

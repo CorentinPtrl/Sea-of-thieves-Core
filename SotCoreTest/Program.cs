@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 using SoT;
-using SoT.UE4;
+using SoT.Game;
 
 namespace SotEspCoreTest
 {
@@ -18,6 +18,13 @@ namespace SotEspCoreTest
                 {
                     Console.WriteLine("Name : {0} Class Name : {1} Parent Class Name {2}", actor.Name, actor.ClassName, actor.ParentClassName);
                     Console.WriteLine(actor.Position);
+
+                    if(actor.Name.Equals("BP_PlayerPirate_C"))
+                    {
+                        Player player = new Player(actor);
+                        Console.WriteLine("Current Health {0} : Max Health {1}", player.CurrentHealth, player.MaxHealth);
+                        Console.ReadKey();
+                    }
                 }
             }
         }
