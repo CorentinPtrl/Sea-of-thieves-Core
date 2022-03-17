@@ -33,7 +33,7 @@ SotCore core = new SotCore();
 //if u are in steam version replace by true
 if (core.Prepare(false))
 {
-    Player localPlayer = new Player(core.GetLocalPlayer());
+    Player localPlayer = core.LocalPlayer;
     //Do your things here
 }
 else
