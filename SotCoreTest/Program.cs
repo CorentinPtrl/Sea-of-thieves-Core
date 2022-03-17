@@ -22,11 +22,11 @@ namespace SotEspCoreTest
                     if(actor.Name.Equals("BP_PlayerPirate_C"))
                     {
                         Player PiratePlayer = new Player(actor);
-                        Console.WriteLine("Player Name : {0} Current Health : {1} Max Health : {2} Wielded Item : {3}",player.PlayerName, player.CurrentHealth, player.MaxHealth, player.CurrentWieldedItem);
+                        Console.WriteLine("Player Name : {0} Current Health : {1} Max Health : {2} Wielded Item : {3}", PiratePlayer.PlayerName, PiratePlayer.CurrentHealth, PiratePlayer.MaxHealth, PiratePlayer.CurrentWieldedItem);
                     }
                 }
                 Player LocalPlayer = core.LocalPlayer;
-                Console.WriteLine("Local Player Name : {0} Current Health : {1} Max Health : {2} Wielded Item : {3}", player.PlayerName, player.CurrentHealth, player.MaxHealth, player.CurrentWieldedItem);
+                Console.WriteLine("Local Player Name : {0} Current Health : {1} Max Health : {2} Wielded Item : {3}", LocalPlayer.PlayerName, LocalPlayer.CurrentHealth, LocalPlayer.MaxHealth, LocalPlayer.CurrentWieldedItem);
             }
         }
     }
