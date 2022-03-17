@@ -60,8 +60,8 @@ namespace SoT
 
         public UE4Actor[] GetActors()
         {
-            var Level = new UEObject(Memory.ReadProcessMemory<UInt64>(Memory.ReadProcessMemory<UInt64>(UWorld)+ 0x30));
-            var Actors = new UEObject(Level.Address + 0xA0);
+            UEObject Level = new UEObject(Memory.ReadProcessMemory<UInt64>(Memory.ReadProcessMemory<UInt64>(UWorld)+ 0x30));
+            UEObject Actors = new UEObject(Level.Address + 0xA0);
             UE4Actor[] result = new UE4Actor[Actors.Num];
 
             for (var i = 0u; i < Actors.Num; i++)

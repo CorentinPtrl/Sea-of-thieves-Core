@@ -22,6 +22,16 @@ namespace SoT.Game
         public FTransform transform;
     }
 
+    public struct FString
+    {
+        private ulong pData;
+        private int DataSize;
+        public override string ToString()
+        {
+            return Encoding.Unicode.GetString(SotCore.Instance.Memory.ReadProcessMemory(pData, DataSize * 0x4)).Split('\0')[0];
+        }
+    }
+
     [StructLayout(LayoutKind.Explicit)]
     public struct AActor
     {

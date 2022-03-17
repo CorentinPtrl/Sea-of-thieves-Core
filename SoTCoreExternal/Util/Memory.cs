@@ -43,6 +43,37 @@ namespace SoT.Util
         {
             procHandle = OpenProcess(0x38, 1, procId);
         }
+        public byte[] ReadProcessMemory(UInt64 addr, int size)
+        {
+            var buffer = new Byte[size];
+            ReadProcessMemory(procHandle, addr, buffer, size, out Int32 bytesRead);
+            return buffer;
+        }
+
+        public String ReadProcessMemoryWstring(UInt64 addr)
+        {
+            List<Byte> bytes = new List<Byte>();
+            var isUtf16 = false;
+            for (UInt32 i = 0; i < 32; i++)
+            {
+                var letters8 = ReadProcessMemory<UInt64>(addr + i * 8);
+                var tempBytes = BitConverter.GetBytes(letters8);
+                for (int j = 0; j < 8; j++)
+                {
+                    if (tempBytes[j] == 0 && j == 1 && bytes.Count == 1)
+                        isUtf16 = true;
+                    if (isUtf16 && j % 2 == 1)
+                        continue;
+                    if (tempBytes[j] == 0)
+                        return (String)Encoding.BigEndianUnicode.GetString(bytes.ToArray());
+                    if ((tempBytes[j] < 32 || tempBytes[j] > 126) && tempBytes[j] != '\n')
+                        return (String)"null";
+                    bytes.Add(tempBytes[j]);
+                }
+            }
+            return (String)Encoding.BigEndianUnicode.GetString(bytes.ToArray());
+        }
+
         public unsafe Object ReadProcessMemory(Type type, UInt64 addr)
         {
             if (type == typeof(String))

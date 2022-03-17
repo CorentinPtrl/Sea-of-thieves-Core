@@ -22,7 +22,7 @@ namespace SotEspCoreTest
                     if(actor.Name.Equals("BP_PlayerPirate_C"))
                     {
                         Player player = new Player(actor);
-                        Console.WriteLine("Current Health {0} : Max Health {1}", player.CurrentHealth, player.MaxHealth);
+                        Console.WriteLine("Player Name : {0} Current Health : {1} Max Health : {1}",player.PlayerName, player.CurrentHealth, player.MaxHealth);
                         Console.ReadKey();
                     }
                 }
