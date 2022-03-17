@@ -15,6 +15,17 @@ namespace SoT
         public UInt64 GNames { get; private set; }
         public UInt64 GObjects { get; private set; }
 
+        public Player LocalPlayer
+        {
+            get
+            {
+                ulong OwningGameInstance = Memory.ReadProcessMemory<ulong>(Memory.ReadProcessMemory<UInt64>(UWorld) + 0x1C0);
+                ulong LocalPlayer = Memory.ReadProcessMemory<ulong>(Memory.ReadProcessMemory<ulong>(OwningGameInstance + 0x38));
+                ulong PlayerController = Memory.ReadProcessMemory<ulong>(LocalPlayer + 0x30);
+                return new Player(Memory.ReadProcessMemory<ulong>(PlayerController + 0x3D8));
+            }
+        }
+
         public SotCore()
         {
             if (Instance == null)
