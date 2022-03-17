@@ -57,4 +57,19 @@ namespace SoT.Game
         [FieldOffset(0x00E4)]
         public float CurrentHealth;
     };
+
+    [StructLayout(LayoutKind.Explicit)]
+    public struct CameraManager
+    {
+        [FieldOffset(0x450)]
+        public Vector3 Location;
+
+        [FieldOffset(0x45C)]
+        public Vector3 Rotation;
+
+        [FieldOffset(0x478)]
+        public float FOV;
+    };
+
+
 }

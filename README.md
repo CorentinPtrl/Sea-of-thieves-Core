@@ -55,7 +55,7 @@ SotCore core = new SotCore();
 //if u are in steam version replace by true
 if (core.Prepare(false))
 {
-    CameraManager cameraManager = core.GetCameraManager();
+    CameraManager cameraManager = core.CameraManager;
     //Do your things here
 }
 else

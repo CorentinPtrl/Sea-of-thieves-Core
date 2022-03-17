@@ -15,14 +15,28 @@ namespace SoT
         public UInt64 GNames { get; private set; }
         public UInt64 GObjects { get; private set; }
 
-        public Player LocalPlayer
+        private ulong PlayerController
         {
             get
             {
                 ulong OwningGameInstance = Memory.ReadProcessMemory<ulong>(Memory.ReadProcessMemory<UInt64>(UWorld) + 0x1C0);
                 ulong LocalPlayer = Memory.ReadProcessMemory<ulong>(Memory.ReadProcessMemory<ulong>(OwningGameInstance + 0x38));
-                ulong PlayerController = Memory.ReadProcessMemory<ulong>(LocalPlayer + 0x30);
+                return Memory.ReadProcessMemory<ulong>(LocalPlayer + 0x30);
+            }
+        }
+        public Player LocalPlayer
+        {
+            get
+            {
                 return new Player(Memory.ReadProcessMemory<ulong>(PlayerController + 0x3D8));
+            }
+        }
+
+        public CameraManager CameraManager
+        {
+            get
+            {
+                return Memory.ReadProcessMemory<CameraManager>(Memory.ReadProcessMemory<ulong>(PlayerController + 0x460));
             }
         }
 
