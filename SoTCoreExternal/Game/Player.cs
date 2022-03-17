@@ -29,6 +29,19 @@ namespace SoT.Game
             }
         }
 
+        public String CurrentWieldedItem
+        {
+            get
+            {
+                ulong WieldedItemComponent = SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + 0x830);
+                ulong CurrentlyWieldedItem = SotCore.Instance.Memory.ReadProcessMemory<ulong>(WieldedItemComponent + 0x2e0);
+                ulong ItemInfo = SotCore.Instance.Memory.ReadProcessMemory<ulong>(CurrentlyWieldedItem + 0x718);
+                ulong ItemDesc = SotCore.Instance.Memory.ReadProcessMemory<ulong>(ItemInfo + 0x430);
+                ulong Name = SotCore.Instance.Memory.ReadProcessMemory<ulong>(ItemDesc + 0x28);
+                return SotCore.Instance.Memory.ReadProcessMemory<FString>(Name).ToString();
+            }
+        }
+
         public float MaxHealth
         {
             get
