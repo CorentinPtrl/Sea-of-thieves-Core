@@ -16,12 +16,16 @@ namespace SoT.Game
             }
         }
 
+        private String _PlayerName;       
+
         public String PlayerName
         {
             get
             {
+                if (_PlayerName != null) return _PlayerName;
                 ulong PlayerState = SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + 0x3F0);
-                return SotCore.Instance.Memory.ReadProcessMemory<FString>(PlayerState+ 0x3d8).ToString();
+                _PlayerName = SotCore.Instance.Memory.ReadProcessMemory<FString>(PlayerState + 0x3d8).ToString();
+                return _PlayerName;
             }
         }
 

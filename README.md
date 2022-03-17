@@ -3,6 +3,8 @@
 Sea of thieves External C# Library, based on [
 RemnantESP](https://github.com/shalzuth/RemnantESP)
 
+#### And if you want some help feel free to join the [discord](https://discord.gg/KkBVKCFdzz)
+
 ## How to Use
 
 #### Get all actors
@@ -61,5 +63,3 @@ else
     //Failed, Sea of thieves not detected
 }
 ```
-
-#### And if you want some help feel free to join the [discord](https://discord.gg/KkBVKCFdzz)
