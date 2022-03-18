@@ -19,10 +19,10 @@ namespace SotEspCoreTest
                     Console.WriteLine("Name : {0} Class Name : {1} Parent Class Name {2}", actor.Name, actor.ClassName, actor.ParentClassName);
                     Console.WriteLine(actor.Position);
 
-                    if(actor.Name.Equals("BP_PlayerPirate_C"))
+                    if (actor.Name.Equals("BP_PlayerPirate_C"))
                     {
-                        Player PiratePlayer = new Player(actor);
-                        Console.WriteLine("Player Name : {0} Current Health : {1} Max Health : {2} Wielded Item : {3}", PiratePlayer.PlayerName, PiratePlayer.CurrentHealth, PiratePlayer.MaxHealth, PiratePlayer.CurrentWieldedItem);
+                            Player PiratePlayer = new Player(actor);
+                            Console.WriteLine("Player Name : {0} Current Health : {1} Max Health : {2} Wielded Item : {3}", PiratePlayer.PlayerName, PiratePlayer.CurrentHealth, PiratePlayer.MaxHealth, PiratePlayer.CurrentWieldedItem);
                     }
                 }
                 Player LocalPlayer = core.LocalPlayer;

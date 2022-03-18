@@ -21,6 +21,16 @@ namespace SoT.Game
             }
         }
 
+        public String FriendlyName
+        {
+            get
+            {
+                if(SotCore.Instance.ActorsName.ContainsKey(Name))
+                    return SotCore.Instance.ActorsName[Name];
+                return "None";
+            }
+        }
+
         int _Id = -1;
         public int Id
         {

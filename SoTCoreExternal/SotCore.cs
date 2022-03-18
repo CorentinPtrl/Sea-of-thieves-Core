@@ -1,6 +1,12 @@
 ﻿using SoT.Util;
 using System;
 using SoT.Game;
+using System.Collections.Generic;
+using System.Timers;
+using Newtonsoft.Json;
+using System.Globalization;
+using Newtonsoft.Json.Converters;
+using System.IO;
 
 namespace SoT
 {
@@ -40,10 +46,23 @@ namespace SoT
             }
         }
 
+        private UE4Actor[] Actors;
+
+        public Dictionary<String, String> ActorsName = new Dictionary<String, String>();
+        private List<String> IncludesActors = new List<string>();
+
+        private static Timer Ticker;
         public SotCore()
         {
             if (Instance == null)
                 Instance = this;
+            Ticker = new Timer(0.1f);
+            Ticker.Start();
+
+            ActorsName = JsonManager.GetJsonActors();
+
+            IncludesActors.AddRange(new String[] { "BP_PlayerPirate_C" });
+            IncludesActors.AddRange(ActorsName.Keys);
         }
         public bool Prepare(bool IsSteam)
         {
@@ -78,23 +97,44 @@ namespace SoT
                 offset = Memory.ReadProcessMemory<UInt32>(UWorldPattern + 3);
                 UWorld = UWorldPattern + offset + 7;
 
+                Ticker.Elapsed += OnTickElapsed;
                 return true;
             }
                 return false;
         }
 
+        private void OnTickElapsed(object Sender, ElapsedEventArgs e)
+        {
+            UEObject Level = new UEObject(Memory.ReadProcessMemory<UInt64>(Memory.ReadProcessMemory<UInt64>(UWorld) + 0x30));
+            UE4Actor Actors = new UE4Actor(Level.Address + 0xA0);
+            List<UE4Actor> actorList = new List<UE4Actor>();
+            for (var i = 0u; i < Actors.Num; i++)
+            {
+                UE4Actor act = new UE4Actor(Actors[i].Address);
+                if (IncludesActors.Contains(act.Name))
+                    actorList.Add(act);
+            }
+
+            this.Actors = actorList.ToArray();
+        }
+
         public UE4Actor[] GetActors()
         {
+            if (this.Actors != null)
+                return this.Actors;
+
             UEObject Level = new UEObject(Memory.ReadProcessMemory<UInt64>(Memory.ReadProcessMemory<UInt64>(UWorld)+ 0x30));
             UEObject Actors = new UEObject(Level.Address + 0xA0);
-            UE4Actor[] result = new UE4Actor[Actors.Num];
+            List<UE4Actor> actorList = new List<UE4Actor>();
 
             for (var i = 0u; i < Actors.Num; i++)
             {
-                result[i] = new UE4Actor(Actors[i].Address);
+                UE4Actor act = new UE4Actor(Actors[i].Address);
+                if (IncludesActors.Contains(act.Name))
+                    actorList.Add(act);
             }
 
-            return result;
+            return actorList.ToArray(); 
         }
     }
 }

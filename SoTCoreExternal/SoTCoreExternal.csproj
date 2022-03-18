@@ -73,6 +73,9 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -91,9 +94,14 @@
     <Compile Include="Game\UE4Actor.cs" />
     <Compile Include="Game\UE4Engine.cs" />
     <Compile Include="Game\UEObject.cs" />
+    <Compile Include="Util\JsonManager.cs" />
     <Compile Include="Util\Memory.cs" />
     <Compile Include="Util\SigScan.cs" />
     <Compile Include="Data\Vector3.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\actors.json" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
