@@ -58,7 +58,8 @@ namespace SoT
         {
             if (Instance == null)
                 Instance = this;
-            Ticker = new Timer(0.1f);
+            Ticker = new Timer(25f);
+            Ticker.SynchronizingObject = null;
             Ticker.Start();
 
             ActorsName = JsonManager.GetJsonActors();
@@ -75,7 +76,7 @@ namespace SoT
             {
                 Engine = new UE4Engine();
 
-                UInt64 UWorldPattern = (UInt64)Memory.FindPattern(new byte[] { 0x48, 0x8B, 0x05, 0x00, 0x00, 0x00, 0x00, 0x48, 0x8B, 0x88, 0x00, 0x00, 0x00, 0x00, 0x48, 0x85, 0xC9, 0x74, 0x06, 0x48, 0x8B, 0x49, 0x70 }, "xxx????xxx????xxxxxxxxx"); 
+                UInt64 UWorldPattern = (UInt64)Memory.FindPattern(new byte[] { 0x48, 0x8B, 0x05, 0x00, 0x00, 0x00, 0x00, 0x48, 0x8B, 0x88, 0x00, 0x00, 0x00, 0x00, 0x48, 0x85, 0xC9, 0x74, 0x06, 0x48, 0x8B, 0x49, 0x70 }, "xxx????xxx????xxxxxxxxx");
 
                 UInt64 GNamesPattern = 0;
                 UInt64 GObjectsPattern = 0;
@@ -103,7 +104,7 @@ namespace SoT
                 Ticker.Elapsed += OnTickElapsed;
                 return true;
             }
-                return false;
+            return false;
         }
 
         private void OnTickElapsed(object Sender, ElapsedEventArgs e)
@@ -126,7 +127,7 @@ namespace SoT
             if (this.Actors != null)
                 return this.Actors;
 
-            UEObject Level = new UEObject(Memory.ReadProcessMemory<UInt64>(Memory.ReadProcessMemory<UInt64>(UWorld)+ 0x30));
+            UEObject Level = new UEObject(Memory.ReadProcessMemory<UInt64>(Memory.ReadProcessMemory<UInt64>(UWorld) + 0x30));
             UEObject Actors = new UEObject(Level.Address + 0xA0);
             List<UE4Actor> actorList = new List<UE4Actor>();
 
@@ -137,7 +138,7 @@ namespace SoT
                     actorList.Add(act);
             }
 
-            return actorList.ToArray(); 
+            return actorList.ToArray();
         }
     }
 }

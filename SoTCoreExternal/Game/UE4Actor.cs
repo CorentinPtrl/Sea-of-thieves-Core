@@ -25,7 +25,7 @@ namespace SoT.Game
         {
             get
             {
-                if(SotCore.Instance.ActorsName.ContainsKey(Name))
+                if (SotCore.Instance.ActorsName.ContainsKey(Name))
                     return SotCore.Instance.ActorsName[Name];
                 return "None";
             }

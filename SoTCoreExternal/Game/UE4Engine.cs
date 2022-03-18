@@ -186,7 +186,7 @@ namespace SoT.Game
                         }
                     }
                     else
-                        sb.AppendLine("  " + fType + " " + fName + "(" + fieldObj.ClassName + "Field Name "+fieldName + ") : 0x" + offset.ToString("X"));
+                        sb.AppendLine("  " + fType + " " + fName + "(" + fieldObj.ClassName + "Field Name " + fieldName + ") : 0x" + offset.ToString("X"));
                 }
                 pcAddr = SotCore.Instance.Memory.ReadProcessMemory<UInt64>(pcAddr + 0x40);
                 if (pcAddr == 0) break;

@@ -14,8 +14,8 @@ namespace SoT.Util
     {
         public static Dictionary<string, string> GetJsonActors()
         {
-            
-            Stream stream = Assembly.GetAssembly(typeof(SotCore)).GetManifestResourceStream(Assembly.GetAssembly(typeof(SotCore)).GetName().Name+".Resources.actors.json");
+
+            Stream stream = Assembly.GetAssembly(typeof(SotCore)).GetManifestResourceStream(Assembly.GetAssembly(typeof(SotCore)).GetName().Name + ".Resources.actors.json");
             if (stream == null)
                 return null;
             StreamReader streamReader = new StreamReader(stream);

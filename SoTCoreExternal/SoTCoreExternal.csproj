@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="Data\Quaternion.cs" />
     <Compile Include="Game\Player.cs" />
+    <Compile Include="Game\Ship.cs" />
     <Compile Include="Game\SotStructs.cs" />
     <Compile Include="SotCore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

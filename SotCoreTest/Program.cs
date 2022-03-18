@@ -20,8 +20,15 @@ namespace SotEspCoreTest
 
                     if (actor.Name.Equals("BP_PlayerPirate_C"))
                     {
-                            Player PiratePlayer = new Player(actor);
-                            Console.WriteLine("Player Name : {0} Current Health : {1} Max Health : {2} Wielded Item : {3}", PiratePlayer.PlayerName, PiratePlayer.CurrentHealth, PiratePlayer.MaxHealth, PiratePlayer.CurrentWieldedItem);
+                        Player PiratePlayer = new Player(actor);
+                        Console.WriteLine("Player Name : {0} Current Health : {1} Max Health : {2} Wielded Item : {3}", PiratePlayer.PlayerName, PiratePlayer.CurrentHealth, PiratePlayer.MaxHealth, PiratePlayer.CurrentWieldedItem);
+                    }
+                    else if (actor.Name.Equals("BP_SmallShipTemplate_C") || actor.Name.Equals("BP_SmallShipNetProxy") || actor.Name.Equals("BP_MediumShipTemplate_C") || actor.Name.Equals("BP_MediumShipNetProxy") || actor.Name.Equals("BP_LargeShipTemplate_C") || actor.Name.Equals("BP_LargeShipNetProxy") || actor.Name.Equals("BP_Rowboat_C") || actor.Name.Equals("BP_RowboatRowingSeat_C") || actor.Name.Equals("BP_RowboatRowingSeat_C") || actor.Name.Equals("BP_Rowboat_WithFrontHarpoon_C"))
+                    {
+                        Ship ship = new Ship(actor);
+                        ShipInternalWater InternalWaterComponent = ship.ShipInternalWater;
+                        SinkingShipParams SinkingShipParams = ship.SinkingShipParams;
+                        Console.WriteLine("Water Level {0} Water Amount {1}", InternalWaterComponent.CurrentVisualWaterLevel, InternalWaterComponent.WaterAmount);
                     }
                 }
                 Player LocalPlayer = core.LocalPlayer;
@@ -32,4 +39,4 @@ namespace SotEspCoreTest
             }
         }
     }
-}       
+}

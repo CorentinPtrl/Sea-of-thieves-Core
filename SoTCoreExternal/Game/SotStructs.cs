@@ -58,6 +58,34 @@ namespace SoT.Game
         public float CurrentHealth;
     };
 
+    public struct SinkingShipParams
+    {
+        public float DragWhenGrindingToHalt;
+        public float MinSpdToStopToBeforeLowering;
+        public float LowerIntoWaterTime;
+        public float TimeIntoLoweringToStartOcclusionZoneShrinkage;
+        public float AngularDragDuringSinkingSequence;
+        public float KeeledOverTime;
+        public float TurnOffBuoyancyTime;
+        public float FinalSinkingBuoyancy;
+        public float SinkingTimeUntilDestroy;
+        public float ReduceWaterOcclusionZoneTime;
+        public float ReduceWaterOcclusionZoneTimeHurryUp;
+        public float TimeIntoKeelingOverToTeleportPlayer;
+        public float MinSampleSubmersionToConsiderInWater;
+        public float MinPctSamplesRequiredSubmergedToBeAbleToSink;
+    };
+
+    [StructLayout(LayoutKind.Explicit)]
+    public struct ShipInternalWater
+    {
+        [FieldOffset(0x418)]
+        public float CurrentVisualWaterLevel;
+
+        [FieldOffset(0x41c)]
+        public float WaterAmount;
+    }
+
     [StructLayout(LayoutKind.Explicit)]
     public struct CameraManager
     {

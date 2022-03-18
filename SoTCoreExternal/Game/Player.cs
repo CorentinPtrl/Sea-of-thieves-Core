@@ -16,7 +16,7 @@ namespace SoT.Game
             }
         }
 
-        private String _PlayerName;       
+        private String _PlayerName;
 
         public String PlayerName
         {
