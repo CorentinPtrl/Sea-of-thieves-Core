@@ -25,8 +25,8 @@ namespace SoT
         {
             get
             {
-                ulong OwningGameInstance = Memory.ReadProcessMemory<ulong>(Memory.ReadProcessMemory<UInt64>(UWorld) + 0x1C0);
-                ulong LocalPlayer = Memory.ReadProcessMemory<ulong>(Memory.ReadProcessMemory<ulong>(OwningGameInstance + 0x38));
+                ulong OwningGameInstance = Memory.ReadProcessMemory<ulong>(Memory.ReadProcessMemory<UInt64>(UWorld) + Offsets["UWorld.OwningGameInstance"]);
+                ulong LocalPlayer = Memory.ReadProcessMemory<ulong>(Memory.ReadProcessMemory<ulong>(OwningGameInstance + Offsets["UGameInstance.LocalPlayers"]));
                 return Memory.ReadProcessMemory<ulong>(LocalPlayer + 0x30);
             }
         }
@@ -34,7 +34,7 @@ namespace SoT
         {
             get
             {
-                return new Player(Memory.ReadProcessMemory<ulong>(PlayerController + 0x3D8));
+                return new Player(Memory.ReadProcessMemory<ulong>(PlayerController + Offsets["APlayerController.Pawn"]));
             }
         }
 
@@ -42,13 +42,15 @@ namespace SoT
         {
             get
             {
-                return Memory.ReadProcessMemory<CameraManager>(Memory.ReadProcessMemory<ulong>(PlayerController + 0x460));
+                return Memory.ReadProcessMemory<CameraManager>(Memory.ReadProcessMemory<ulong>(PlayerController + Offsets["APlayerController.CameraManager"]));
             }
         }
 
         private UE4Actor[] Actors;
 
         public Dictionary<String, String> ActorsName = new Dictionary<String, String>();
+        public Dictionary<String, ulong> Offsets = new Dictionary<String, ulong>();
+
         private List<String> IncludesActors = new List<string>();
 
         private static Timer Ticker;
@@ -60,6 +62,7 @@ namespace SoT
             Ticker.Start();
 
             ActorsName = JsonManager.GetJsonActors();
+            Offsets = JsonManager.GetJsonOffsets();
 
             IncludesActors.AddRange(new String[] { "BP_PlayerPirate_C" });
             IncludesActors.AddRange(ActorsName.Keys);

@@ -1,0 +1,21 @@
+﻿{
+  "AActor.HealthComponent": 2136,
+  "AActor.PlayerState": 1008,
+  "APlayerState.PlayerName": 984,
+  "AActor.WieldedItemComponent": 2096,
+  "UWieldedItemComponent.WieldedItem": 736,
+  "AWieldableItem.ItemInfo": 1816,
+  "AItemProxy.AItemInfo": 1072,
+  "AItemInfo.UItemDesc": 40,
+  "AActor.actorId": 24,
+  "AActor.rootComponent": 368,
+  "ACrewService.Crews": 1568,
+  "APlayerController.CameraManager": 1120,
+  "APlayerController.Pawn": 984,
+  "AShip.CrewOwnershipComponent": 2000,
+  "UCrewOwnershipComponent.CrewId": 212,
+  "UGameInstance.LocalPlayers": 56,
+  "ULocalPlayer.PlayerController": 48,
+  "UWorld.OwningGameInstance": 448,
+  "UWorld.PersistentLevel": 48
+}

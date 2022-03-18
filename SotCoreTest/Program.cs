@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using SoT;
 using SoT.Game;
 

@@ -37,7 +37,7 @@ namespace SoT.Game
             get
             {
                 if (_Id != -1) return _Id;
-                _Id = SotCore.Instance.Memory.ReadProcessMemory<int>(Address + 0x18);
+                _Id = SotCore.Instance.Memory.ReadProcessMemory<int>(Address + (byte)SotCore.Instance.Offsets["AActor.actorId"]);
                 return _Id;
             }
         }

@@ -102,6 +102,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\actors.json" />
     <None Include="packages.config" />
+    <EmbeddedResource Include="Resources\offsets.json" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -23,5 +23,17 @@ namespace SoT.Util
             Dictionary<String, String> json = JsonConvert.DeserializeObject<ConcurrentDictionary<string, string>>(jsonText).ToDictionary(x => x.Value, x => x.Key);
             return json;
         }
+
+        public static Dictionary<string, ulong> GetJsonOffsets()
+        {
+
+            Stream stream = Assembly.GetAssembly(typeof(SotCore)).GetManifestResourceStream(Assembly.GetAssembly(typeof(SotCore)).GetName().Name + ".Resources.offsets.json");
+            if (stream == null)
+                return null;
+            StreamReader streamReader = new StreamReader(stream);
+            string jsonText = streamReader.ReadToEnd();
+            Dictionary<String, ulong> json = JsonConvert.DeserializeObject<Dictionary<String, ulong>>(jsonText);
+            return json;
+        }
     }
 }

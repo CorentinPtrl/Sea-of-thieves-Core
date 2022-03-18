@@ -12,7 +12,7 @@ namespace SoT.Game
         {
             get
             {
-                return SotCore.Instance.Memory.ReadProcessMemory<UHealthComponent>(SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + 2136));
+                return SotCore.Instance.Memory.ReadProcessMemory<UHealthComponent>(SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + SotCore.Instance.Offsets["AActor.HealthComponent"]));
             }
         }
 
@@ -23,8 +23,9 @@ namespace SoT.Game
             get
             {
                 if (_PlayerName != null) return _PlayerName;
-                ulong PlayerState = SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + 0x3F0);
-                _PlayerName = SotCore.Instance.Memory.ReadProcessMemory<FString>(PlayerState + 0x3d8).ToString();
+                ulong PlayerState = SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + SotCore.Instance.Offsets["AActor.PlayerState"]);
+
+                _PlayerName = SotCore.Instance.Memory.ReadProcessMemory<FString>(PlayerState + SotCore.Instance.Offsets["APlayerState.PlayerName"]).ToString();
                 return _PlayerName;
             }
         }
@@ -33,11 +34,11 @@ namespace SoT.Game
         {
             get
             {
-                ulong WieldedItemComponent = SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + 0x830);
-                ulong CurrentlyWieldedItem = SotCore.Instance.Memory.ReadProcessMemory<ulong>(WieldedItemComponent + 0x2e0);
-                ulong ItemInfo = SotCore.Instance.Memory.ReadProcessMemory<ulong>(CurrentlyWieldedItem + 0x718);
-                ulong ItemDesc = SotCore.Instance.Memory.ReadProcessMemory<ulong>(ItemInfo + 0x430);
-                ulong Name = SotCore.Instance.Memory.ReadProcessMemory<ulong>(ItemDesc + 0x28);
+                ulong WieldedItemComponent = SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + SotCore.Instance.Offsets["AActor.WieldedItemComponent"]);
+                ulong CurrentlyWieldedItem = SotCore.Instance.Memory.ReadProcessMemory<ulong>(WieldedItemComponent + SotCore.Instance.Offsets["UWieldedItemComponent.WieldedItem"]);
+                ulong ItemInfo = SotCore.Instance.Memory.ReadProcessMemory<ulong>(CurrentlyWieldedItem + SotCore.Instance.Offsets["AWieldableItem.ItemInfo"]);
+                ulong ItemDesc = SotCore.Instance.Memory.ReadProcessMemory<ulong>(ItemInfo + SotCore.Instance.Offsets["AItemProxy.AItemInfo"]);
+                ulong Name = SotCore.Instance.Memory.ReadProcessMemory<ulong>(ItemDesc + SotCore.Instance.Offsets["AItemInfo.UItemDesc"]);
                 return SotCore.Instance.Memory.ReadProcessMemory<FString>(Name).ToString();
             }
         }
