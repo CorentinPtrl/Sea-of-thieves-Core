@@ -80,5 +80,22 @@ namespace SoT.Game
         public UE4Actor(ulong address) : base(address)
         {
         }
+        public T GetCustomRotation<T>()
+        {
+            ulong SceneComponent = SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + 0x170);
+            return SotCore.Instance.Memory.ReadProcessMemory<T>((SceneComponent) + 0x140);
+        }
+
+        public T GetCustomPosition<T>()
+        {
+            ulong SceneComponent = SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + 0x170);
+            return SotCore.Instance.Memory.ReadProcessMemory<T>((SceneComponent) + 0x140+ 0x10);
+        }
+
+        public T GetCustomScale<T>()
+        {
+            ulong SceneComponent = SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + 0x170);
+            return SotCore.Instance.Memory.ReadProcessMemory<T>((SceneComponent) + 0x140 + 0x14);
+        }
     }
 }

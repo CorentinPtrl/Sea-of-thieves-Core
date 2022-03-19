@@ -58,7 +58,7 @@ namespace SoT
         {
             if (Instance == null)
                 Instance = this;
-            Ticker = new Timer(25f);
+            Ticker = new Timer(30f);
             Ticker.SynchronizingObject = null;
             Ticker.Start();
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using SoT;
+using SoT.Data;
 using SoT.Game;
 
 namespace SotEspCoreTest
@@ -16,7 +17,7 @@ namespace SotEspCoreTest
                 foreach (UE4Actor actor in actors)
                 {
                     Console.WriteLine("Name : {0} Class Name : {1} Parent Class Name {2}", actor.Name, actor.ClassName, actor.ParentClassName);
-                    Console.WriteLine(actor.Position);
+                    Console.WriteLine("Position {0} Custom Position {1}", actor.Position, actor.GetCustomPosition<Vector3>());
 
                     if (actor.Name.Equals("BP_PlayerPirate_C"))
                     {
