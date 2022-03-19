@@ -63,5 +63,5 @@ else
     //Failed, Sea of thieves not detected
 }
 ```
-#### Credits
+## Credits
 DougTheDruid for [SoT-Actor-Names](https://github.com/DougTheDruid/SoT-Actor-Names)
