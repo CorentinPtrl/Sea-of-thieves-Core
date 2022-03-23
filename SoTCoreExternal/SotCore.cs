@@ -54,11 +54,11 @@ namespace SoT
         private List<String> IncludesActors = new List<string>();
 
         private static Timer Ticker;
-        public SotCore()
+        public SotCore(float IntervalUpdate = 30)
         {
             if (Instance == null)
                 Instance = this;
-            Ticker = new Timer(30f);
+            Ticker = new Timer(IntervalUpdate);
             Ticker.SynchronizingObject = null;
             Ticker.Start();
 
