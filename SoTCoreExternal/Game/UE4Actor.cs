@@ -82,20 +82,20 @@ namespace SoT.Game
         }
         public T GetCustomRotation<T>()
         {
-            ulong SceneComponent = SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + 0x170);
-            return SotCore.Instance.Memory.ReadProcessMemory<T>((SceneComponent) + 0x140);
+            ulong SceneComponent = SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + (byte)SotCore.Instance.Offsets["AActor.rootComponent"]);
+            return SotCore.Instance.Memory.ReadProcessMemory<T>((SceneComponent) + (byte)SotCore.Instance.Offsets["SceneComponent.FTransform"]);
         }
 
         public T GetCustomPosition<T>()
         {
-            ulong SceneComponent = SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + 0x170);
-            return SotCore.Instance.Memory.ReadProcessMemory<T>((SceneComponent) + 0x140+ 0x10);
+            ulong SceneComponent = SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + (byte)SotCore.Instance.Offsets["AActor.rootComponent"]);
+            return SotCore.Instance.Memory.ReadProcessMemory<T>((SceneComponent) + (byte)SotCore.Instance.Offsets["SceneComponent.FTransform"] + 0x10);
         }
 
         public T GetCustomScale<T>()
         {
-            ulong SceneComponent = SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + 0x170);
-            return SotCore.Instance.Memory.ReadProcessMemory<T>((SceneComponent) + 0x140 + 0x14);
+            ulong SceneComponent = SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + (byte)SotCore.Instance.Offsets["AActor.rootComponent"]);
+            return SotCore.Instance.Memory.ReadProcessMemory<T>((SceneComponent) + (byte)SotCore.Instance.Offsets["SceneComponent.FTransform"] + 0x14);
         }
     }
 }

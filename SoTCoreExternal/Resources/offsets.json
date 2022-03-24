@@ -9,6 +9,7 @@
   "AItemInfo.UItemDesc": 40,
   "AActor.actorId": 24,
   "AActor.rootComponent": 368,
+  "SceneComponent.FTransform": 320,
   "ACrewService.Crews": 1568,
   "APlayerController.CameraManager": 1120,
   "APlayerController.Pawn": 984,
