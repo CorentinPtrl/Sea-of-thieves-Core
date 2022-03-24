@@ -163,5 +163,14 @@ namespace SoT.Game
             vTableFunc = SotCore.Instance.Memory.ReadProcessMemory<UInt64>(vTableFunc);
             return SotCore.Instance.Memory.Execute<T>((IntPtr)vTableFunc, (IntPtr)BaseObjAddr, (IntPtr)Address, args);
         }
+
+        public static bool operator ==(UEObject lhs, UEObject rhs)
+        {
+            return lhs.Address == rhs.Address;
+        }
+        public static bool operator !=(UEObject lhs, UEObject rhs)
+        {
+            return lhs.Address != rhs.Address;
+        }
     }
 }
