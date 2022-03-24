@@ -34,7 +34,7 @@ namespace SoT
         {
             get
             {
-                return new Player(Memory.ReadProcessMemory<ulong>(PlayerController + Offsets["APlayerController.Pawn"]));
+                return new Player(PlayerController);
             }
         }
 

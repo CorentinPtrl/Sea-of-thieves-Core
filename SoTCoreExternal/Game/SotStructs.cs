@@ -99,5 +99,14 @@ namespace SoT.Game
         public float FOV;
     };
 
+    [StructLayout(LayoutKind.Explicit)]
+    public struct DrowningComponent
+    {
+        [FieldOffset(0x108)]
+        public float OxygenLevel;
+    };
+
+
+
 
 }

@@ -33,7 +33,7 @@ namespace SotEspCoreTest
                     }
                 }
                 Player LocalPlayer = core.LocalPlayer;
-                Console.WriteLine("Local Player Name : {0} Current Health : {1} Max Health : {2} Wielded Item : {3}", LocalPlayer.PlayerName, LocalPlayer.CurrentHealth, LocalPlayer.MaxHealth, LocalPlayer.CurrentWieldedItem);
+                Console.WriteLine("Local Player Name : {0} Current Health : {1} Max Health : {2} Oxygen Level : {3} Wielded Item : {4}", LocalPlayer.PlayerName, LocalPlayer.CurrentHealth, LocalPlayer.MaxHealth, LocalPlayer.OxygenLevel, LocalPlayer.CurrentWieldedItem);
 
                 CameraManager cameraManager = core.CameraManager;
                 Console.WriteLine("Camera Manager Location : {0} Rotation : {1} FOV : {2}", cameraManager.Location, cameraManager.Rotation, cameraManager.FOV);

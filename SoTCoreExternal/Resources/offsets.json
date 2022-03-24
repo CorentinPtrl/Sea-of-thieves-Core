@@ -13,6 +13,8 @@
   "ACrewService.Crews": 1568,
   "APlayerController.CameraManager": 1120,
   "APlayerController.Pawn": 984,
+  "APlayerController.Character": 1000,
+  "AthenaPlayerCharacter.DrowningComponent": 3336,
   "AShip.CrewOwnershipComponent": 2000,
   "AShip.SinkingComponent": 1520,
   "AShip.ShipInternalWaterComponent": 1512,

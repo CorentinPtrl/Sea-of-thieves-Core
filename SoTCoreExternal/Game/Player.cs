@@ -8,11 +8,37 @@ namespace SoT.Game
 {
     public class Player : UE4Actor
     {
+        public ulong PlayerPawn
+        {
+            get
+            {
+                return SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + SotCore.Instance.Offsets["APlayerController.Pawn"]);
+
+            }
+        }
+
+        public ulong Character
+        {
+            get
+            {
+                return SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + SotCore.Instance.Offsets["APlayerController.Character"]);
+
+            }
+        }
+
         private UHealthComponent HealthComponent
         {
             get
             {
-                return SotCore.Instance.Memory.ReadProcessMemory<UHealthComponent>(SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + SotCore.Instance.Offsets["AActor.HealthComponent"]));
+                return SotCore.Instance.Memory.ReadProcessMemory<UHealthComponent>(SotCore.Instance.Memory.ReadProcessMemory<ulong>(PlayerPawn + SotCore.Instance.Offsets["AActor.HealthComponent"]));
+            }
+        }
+
+        private DrowningComponent DrowningComponent
+        {
+            get
+            {
+                return SotCore.Instance.Memory.ReadProcessMemory<DrowningComponent>(SotCore.Instance.Memory.ReadProcessMemory<ulong>(PlayerPawn + SotCore.Instance.Offsets["AthenaPlayerCharacter.DrowningComponent"]));
             }
         }
 
@@ -23,7 +49,7 @@ namespace SoT.Game
             get
             {
                 if (_PlayerName != null) return _PlayerName;
-                ulong PlayerState = SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + SotCore.Instance.Offsets["AActor.PlayerState"]);
+                ulong PlayerState = SotCore.Instance.Memory.ReadProcessMemory<ulong>(PlayerPawn + SotCore.Instance.Offsets["AActor.PlayerState"]);
 
                 _PlayerName = SotCore.Instance.Memory.ReadProcessMemory<FString>(PlayerState + SotCore.Instance.Offsets["APlayerState.PlayerName"]).ToString();
                 return _PlayerName;
@@ -34,7 +60,7 @@ namespace SoT.Game
         {
             get
             {
-                ulong WieldedItemComponent = SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + SotCore.Instance.Offsets["AActor.WieldedItemComponent"]);
+                ulong WieldedItemComponent = SotCore.Instance.Memory.ReadProcessMemory<ulong>(PlayerPawn + SotCore.Instance.Offsets["AActor.WieldedItemComponent"]);
                 ulong CurrentlyWieldedItem = SotCore.Instance.Memory.ReadProcessMemory<ulong>(WieldedItemComponent + SotCore.Instance.Offsets["UWieldedItemComponent.WieldedItem"]);
                 ulong ItemInfo = SotCore.Instance.Memory.ReadProcessMemory<ulong>(CurrentlyWieldedItem + SotCore.Instance.Offsets["AWieldableItem.ItemInfo"]);
                 ulong ItemDesc = SotCore.Instance.Memory.ReadProcessMemory<ulong>(ItemInfo + SotCore.Instance.Offsets["AItemProxy.AItemInfo"]);
@@ -56,6 +82,14 @@ namespace SoT.Game
             get
             {
                 return HealthComponent.CurrentHealth;
+            }
+        }
+
+        public float OxygenLevel
+        {
+            get
+            {
+                return DrowningComponent.OxygenLevel;
             }
         }
 
