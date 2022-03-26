@@ -8,6 +8,18 @@ using System.Threading.Tasks;
 
 namespace SoT.Game
 {
+    public struct TArray
+    {
+        public T GetValue<T>(int index, int size)
+        {
+            ulong place = (ulong)(size * index);
+            return SotCore.Instance.Memory.ReadProcessMemory<T>(Data + place);
+        }
+
+        ulong Data;
+        public Int32 MaxElements;
+        public Int32 NumElements;
+    }
     public struct FTransform
     {
         public Quaternion Rotation;
@@ -106,7 +118,10 @@ namespace SoT.Game
         public float OxygenLevel;
     };
 
-
-
-
+    [StructLayout(LayoutKind.Explicit)]
+    public struct Island
+    {
+        [FieldOffset(0x0)]
+        public int FNameIndex;
+    };
 }

@@ -24,5 +24,8 @@
   "UGameInstance.LocalPlayers": 56,
   "ULocalPlayer.PlayerController": 48,
   "UWorld.OwningGameInstance": 448,
-  "UWorld.PersistentLevel": 48
+  "UWorld.PersistentLevel": 48,
+  "IslandService.IslandArray": 1160,
+  "Island.Size": 104
+
 }

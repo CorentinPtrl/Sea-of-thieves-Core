@@ -2,6 +2,7 @@
 using SoT;
 using SoT.Data;
 using SoT.Game;
+using SoT.Game.Service;
 
 namespace SotEspCoreTest
 {
@@ -30,6 +31,16 @@ namespace SotEspCoreTest
                         ShipInternalWater InternalWaterComponent = ship.ShipInternalWater;
                         SinkingShipParams SinkingShipParams = ship.SinkingShipParams;
                         Console.WriteLine("Water Level {0} Water Amount {1}", InternalWaterComponent.CurrentVisualWaterLevel, InternalWaterComponent.WaterAmount);
+                    }
+                    else if(actor.Name.Equals("IslandService"))
+                    {
+                        IslandService IslandService = new IslandService(actor);
+
+                        for (int i = 0; i < IslandService.Num; i++)
+                        {
+                            Island Island = IslandService.GetIslandByIndex(i);
+                            Console.WriteLine("Island Name : {0}", core.Engine.GetName(Island.FNameIndex));
+                        }
                     }
                 }
                 Player LocalPlayer = core.LocalPlayer;
