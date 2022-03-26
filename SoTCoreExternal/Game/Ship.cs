@@ -28,6 +28,17 @@ namespace SoT.Game
             }
         }
 
+        public Guid CrewId
+        {
+            get
+            {
+                ulong CrewOwnershipComponent = (SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + SotCore.Instance.Offsets["AShip.CrewOwnershipComponent"]));
+                ulong CrewIdPtr = SotCore.Instance.Memory.ReadProcessMemory<ulong>(CrewOwnershipComponent + SotCore.Instance.Offsets["UCrewOwnershipComponent.CrewId"]);
+                Guid CrewId = SotCore.Instance.Memory.ReadProcessMemory<Guid>(CrewIdPtr);
+                return CrewId;
+            }
+        }
+
         public Ship(ulong address) : base(address)
         {
         }

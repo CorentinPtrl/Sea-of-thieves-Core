@@ -16,7 +16,7 @@
   "APlayerController.Pawn": 984,
   "APlayerController.Character": 1000,
   "AthenaPlayerCharacter.DrowningComponent": 3336,
-  "AShip.CrewOwnershipComponent": 2000,
+  "AShip.CrewOwnershipComponent": 1904,
   "AShip.SinkingComponent": 1520,
   "AShip.ShipInternalWaterComponent": 1512,
   "SinkingComponent.SinkingParams": 208,
