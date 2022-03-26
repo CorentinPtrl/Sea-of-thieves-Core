@@ -12,7 +12,7 @@ namespace SoT.Util
 {
     public class JsonManager
     {
-        public static Dictionary<string, string> GetJsonActors()
+        public static Dictionary<string, Actor> GetJsonActors()
         {
 
             Stream stream = Assembly.GetAssembly(typeof(SotCore)).GetManifestResourceStream(Assembly.GetAssembly(typeof(SotCore)).GetName().Name + ".Resources.actors.json");
@@ -20,8 +20,16 @@ namespace SoT.Util
                 return null;
             StreamReader streamReader = new StreamReader(stream);
             string jsonText = streamReader.ReadToEnd();
-            Dictionary<String, String> json = JsonConvert.DeserializeObject<ConcurrentDictionary<string, string>>(jsonText).ToDictionary(x => x.Value, x => x.Key);
-            return json;
+            ConcurrentDictionary<string, Actor>  Json = JsonConvert.DeserializeObject<ConcurrentDictionary<string, Actor>>(jsonText);
+            Dictionary<String, Actor> result = new Dictionary<string, Actor>();
+            foreach(KeyValuePair<String, Actor> actor in Json.ToArray())
+            {
+                Actor newActor = new Actor();
+                newActor.Name = actor.Key;
+                newActor.Category = actor.Value.Category;
+                result.Add(actor.Value.Name, newActor);
+            }
+            return result;
         }
 
         public static Dictionary<string, ulong> GetJsonOffsets()
@@ -34,6 +42,12 @@ namespace SoT.Util
             string jsonText = streamReader.ReadToEnd();
             Dictionary<String, ulong> json = JsonConvert.DeserializeObject<Dictionary<String, ulong>>(jsonText);
             return json;
+        }
+
+        public struct Actor
+        {
+            public String Name;
+            public String Category;
         }
     }
 }

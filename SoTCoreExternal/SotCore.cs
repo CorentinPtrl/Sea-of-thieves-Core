@@ -48,7 +48,7 @@ namespace SoT
 
         private UE4Actor[] Actors;
 
-        public Dictionary<String, String> ActorsName = new Dictionary<String, String>();
+        public Dictionary<String, JsonManager.Actor> ActorsName = new Dictionary<String, JsonManager.Actor>();
         public Dictionary<String, ulong> Offsets = new Dictionary<String, ulong>();
 
         private List<String> IncludesActors = new List<string>();
