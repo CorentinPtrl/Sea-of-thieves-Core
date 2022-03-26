@@ -65,7 +65,7 @@ namespace SoT
             ActorsName = JsonManager.GetJsonActors();
             Offsets = JsonManager.GetJsonOffsets();
 
-            IncludesActors.AddRange(new String[] { "BP_PlayerPirate_C", "IslandService" });
+            IncludesActors.AddRange(new String[] { "BP_PlayerPirate_C", "IslandService", "CrewService" });
             IncludesActors.AddRange(ActorsName.Keys);
         }
         public bool Prepare(bool IsSteam)

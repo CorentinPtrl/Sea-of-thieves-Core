@@ -42,6 +42,18 @@ namespace SotEspCoreTest
                             Console.WriteLine("Island Name : {0}", core.Engine.GetName(Island.FNameIndex));
                         }
                     }
+                    else if (actor.Name.Equals("CrewService"))
+                    {
+                        CrewService CrewService = new CrewService(actor);
+                        for (int i = 0; i < CrewService.Num; i++)
+                        {
+                            Crew Crew = CrewService.GetCrewByIndex(i);
+                            for(int d = 0; d < Crew.Players.NumElements; d++)
+                            {
+                                Player player = new Player(Crew.Players.GetValuePtr(d));
+                            }
+                        }
+                    }
                 }
                 Player LocalPlayer = core.LocalPlayer;
                 Console.WriteLine("Local Player Name : {0} Current Health : {1} Max Health : {2} Oxygen Level : {3} Wielded Item : {4}", LocalPlayer.PlayerName, LocalPlayer.CurrentHealth, LocalPlayer.MaxHealth, LocalPlayer.OxygenLevel, LocalPlayer.CurrentWieldedItem);

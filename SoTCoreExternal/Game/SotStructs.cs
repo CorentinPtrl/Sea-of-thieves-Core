@@ -16,10 +16,33 @@ namespace SoT.Game
             return SotCore.Instance.Memory.ReadProcessMemory<T>(Data + place);
         }
 
+        public ulong GetValuePtr(int index)
+        {
+            return SotCore.Instance.Memory.ReadProcessMemory<ulong>(Data + (ulong)(8 * index));
+        }
+
         ulong Data;
         public Int32 MaxElements;
         public Int32 NumElements;
     }
+
+    public struct Guid
+    {
+        int A;
+        int B;
+        int C;
+        int D;
+
+        public static bool operator ==(Guid lhs, Guid rhs)
+        {
+            return lhs.A == rhs.A && lhs.B == rhs.B && lhs.C == rhs.C && lhs.D == rhs.D;
+        }
+        public static bool operator !=(Guid lhs, Guid rhs)
+        {
+            return lhs.A != rhs.A || lhs.B != rhs.B || lhs.C != rhs.C || lhs.D != rhs.D;
+        }
+    }
+
     public struct FTransform
     {
         public Quaternion Rotation;
@@ -124,4 +147,17 @@ namespace SoT.Game
         [FieldOffset(0x0)]
         public int FNameIndex;
     };
+
+    [StructLayout(LayoutKind.Explicit)]
+    public struct Crew
+    {
+        [FieldOffset(0x0)]
+        public Guid CrewId;
+
+        [FieldOffset(0x10)]
+        public Guid SessionId;
+
+        [FieldOffset(0x20)]
+        public TArray Players;
+    }
 }
