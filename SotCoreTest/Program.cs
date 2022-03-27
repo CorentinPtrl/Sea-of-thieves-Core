@@ -54,7 +54,7 @@ namespace SotEspCoreTest
                             {
                                 Player player = new Player(Players.GetValuePtr(d), true);
                                 Console.WriteLine("Player Name : {0} Crew : {1}",player.PlayerName, Crew.CrewId);
-;                            }
+                            }
                         }
                     }
                 }
