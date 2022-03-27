@@ -30,7 +30,7 @@ namespace SotEspCoreTest
                         Ship ship = new Ship(actor);
                         ShipInternalWater InternalWaterComponent = ship.ShipInternalWater;
                         SinkingShipParams SinkingShipParams = ship.SinkingShipParams;
-                        Console.WriteLine("Water Level {0} Water Amount {1}", InternalWaterComponent.CurrentVisualWaterLevel, InternalWaterComponent.WaterAmount);
+                        Console.WriteLine("Water Level {0} Water Amount {1} Crew Id : {2}", InternalWaterComponent.CurrentVisualWaterLevel, InternalWaterComponent.WaterAmount, ship.CrewId);
                     }
                     else if(actor.Name.Equals("IslandService"))
                     {
@@ -53,7 +53,7 @@ namespace SotEspCoreTest
                             for(int d = 0; d < Players.Length; d++)
                             {
                                 Player player = new Player(Players.GetValuePtr(d), true);
-                                Console.WriteLine("Player Name : {0}",player.PlayerName);
+                                Console.WriteLine("Player Name : {0} Crew : {1}",player.PlayerName, Crew.CrewId);
 ;                            }
                         }
                     }

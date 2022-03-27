@@ -23,6 +23,11 @@ namespace SoT.Game
         {
             return lhs.A != rhs.A || lhs.B != rhs.B || lhs.C != rhs.C || lhs.D != rhs.D;
         }
+
+        public override string ToString()
+        {
+            return String.Format("(A : {0}, B: {1}, C: {2}, D : {3})",A,B,C,D);
+        }
     }
 
     public struct FTransform

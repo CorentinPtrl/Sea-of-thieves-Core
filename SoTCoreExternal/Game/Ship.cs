@@ -33,8 +33,7 @@ namespace SoT.Game
             get
             {
                 ulong CrewOwnershipComponent = (SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + SotCore.Instance.Offsets["AShip.CrewOwnershipComponent"]));
-                ulong CrewIdPtr = SotCore.Instance.Memory.ReadProcessMemory<ulong>(CrewOwnershipComponent + SotCore.Instance.Offsets["UCrewOwnershipComponent.CrewId"]);
-                Guid CrewId = SotCore.Instance.Memory.ReadProcessMemory<Guid>(CrewIdPtr);
+                Guid CrewId = SotCore.Instance.Memory.ReadProcessMemory<Guid>(CrewOwnershipComponent + SotCore.Instance.Offsets["UCrewOwnershipComponent.CrewId"]);
                 return CrewId;
             }
         }
