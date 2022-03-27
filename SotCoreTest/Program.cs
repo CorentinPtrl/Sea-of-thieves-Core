@@ -35,23 +35,26 @@ namespace SotEspCoreTest
                     else if(actor.Name.Equals("IslandService"))
                     {
                         IslandService IslandService = new IslandService(actor);
-
-                        for (int i = 0; i < IslandService.Num; i++)
+                        TArray<Island> IslandArray = IslandService.IslandArray;
+                        for (int i = 0; i < IslandArray.Length; i++)
                         {
-                            Island Island = IslandService.GetIslandByIndex(i);
+                            Island Island = IslandArray.GetValue(i);
                             Console.WriteLine("Island Name : {0}", core.Engine.GetName(Island.FNameIndex));
                         }
                     }
                     else if (actor.Name.Equals("CrewService"))
                     {
                         CrewService CrewService = new CrewService(actor);
-                        for (int i = 0; i < CrewService.Num; i++)
+                        TArray<Crew> Crews = CrewService.Crews;
+                        for (int i = 0; i < Crews.Length; i++)
                         {
-                            Crew Crew = CrewService.GetCrewByIndex(i);
-                            for(int d = 0; d < Crew.Players.NumElements; d++)
+                            Crew Crew = new Crew(Crews.GetValueAddress(i));
+                            TArray<Player> Players = Crew.Players;
+                            for(int d = 0; d < Players.Length; d++)
                             {
-                                Player player = new Player(Crew.Players.GetValuePtr(d));
-                            }
+                                Player player = new Player(Players.GetValuePtr(d), true);
+                                Console.WriteLine("Player Name : {0}",player.PlayerName);
+;                            }
                         }
                     }
                 }

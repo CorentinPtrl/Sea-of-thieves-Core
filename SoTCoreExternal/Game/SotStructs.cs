@@ -8,24 +8,6 @@ using System.Threading.Tasks;
 
 namespace SoT.Game
 {
-    public struct TArray
-    {
-        public T GetValue<T>(int index, int size)
-        {
-            ulong place = (ulong)(size * index);
-            return SotCore.Instance.Memory.ReadProcessMemory<T>(Data + place);
-        }
-
-        public ulong GetValuePtr(int index)
-        {
-            return SotCore.Instance.Memory.ReadProcessMemory<ulong>(Data + (ulong)(8 * index));
-        }
-
-        ulong Data;
-        public Int32 MaxElements;
-        public Int32 NumElements;
-    }
-
     public struct Guid
     {
         int A;
@@ -142,22 +124,10 @@ namespace SoT.Game
     };
 
     [StructLayout(LayoutKind.Explicit)]
+    [OffsetAttribute("Island")]
     public struct Island
     {
         [FieldOffset(0x0)]
         public int FNameIndex;
     };
-
-    [StructLayout(LayoutKind.Explicit)]
-    public struct Crew
-    {
-        [FieldOffset(0x0)]
-        public Guid CrewId;
-
-        [FieldOffset(0x10)]
-        public Guid SessionId;
-
-        [FieldOffset(0x20)]
-        public TArray Players;
-    }
 }

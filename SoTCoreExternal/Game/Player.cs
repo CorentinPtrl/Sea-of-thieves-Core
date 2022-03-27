@@ -8,10 +8,14 @@ namespace SoT.Game
 {
     public class Player : UE4Actor
     {
+        public bool IsPlayerState = false;
+
         public ulong PlayerPawn
         {
             get
             {
+                if (IsPlayerState)
+                    throw new Exception("Wrong class");
                 return SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + SotCore.Instance.Offsets["APlayerController.Pawn"]);
 
             }
@@ -21,6 +25,8 @@ namespace SoT.Game
         {
             get
             {
+                if (IsPlayerState)
+                    throw new Exception("Wrong class");
                 return SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + SotCore.Instance.Offsets["APlayerController.Character"]);
 
             }
@@ -48,11 +54,15 @@ namespace SoT.Game
         {
             get
             {
-                if (_PlayerName != null) return _PlayerName;
-                ulong PlayerState = SotCore.Instance.Memory.ReadProcessMemory<ulong>(PlayerPawn + SotCore.Instance.Offsets["AActor.PlayerState"]);
+                    if (_PlayerName != null) return _PlayerName;
+                    ulong PlayerState;
+                    if (!IsPlayerState)
+                        PlayerState = SotCore.Instance.Memory.ReadProcessMemory<ulong>(PlayerPawn + SotCore.Instance.Offsets["AActor.PlayerState"]);
+                    else
+                        PlayerState = Address;
 
-                _PlayerName = SotCore.Instance.Memory.ReadProcessMemory<FString>(PlayerState + SotCore.Instance.Offsets["APlayerState.PlayerName"]).ToString();
-                return _PlayerName;
+                    _PlayerName = SotCore.Instance.Memory.ReadProcessMemory<FString>(PlayerState + SotCore.Instance.Offsets["APlayerState.PlayerName"]).ToString();
+                    return _PlayerName;
             }
         }
 
@@ -93,12 +103,14 @@ namespace SoT.Game
             }
         }
 
-        public Player(UEObject ueobject) : base(ueobject.Address)
+        public Player(UEObject ueobject, bool IsPlayerState = false) : base(ueobject.Address)
         {
+            this.IsPlayerState = IsPlayerState;
         }
 
-        public Player(ulong address) : base(address)
+        public Player(ulong address, bool IsPlayerState = false) : base(address)
         {
+            this.IsPlayerState = IsPlayerState;
         }
     }
 }
