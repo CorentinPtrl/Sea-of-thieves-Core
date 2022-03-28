@@ -34,7 +34,7 @@ namespace SoT
         {
             get
             {
-                return new Player(PlayerController);
+                return new Player(PlayerController, IsLocalPlayer: true);
             }
         }
 

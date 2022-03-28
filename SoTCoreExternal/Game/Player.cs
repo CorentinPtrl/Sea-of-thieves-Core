@@ -10,12 +10,17 @@ namespace SoT.Game
     {
         public bool IsPlayerState = false;
 
+        public bool IsLocalPlayer = false;
+
+
         public ulong PlayerPawn
         {
             get
             {
                 if (IsPlayerState)
                     throw new Exception("Wrong class");
+                if (!IsLocalPlayer)
+                    return Address;
                 return SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + SotCore.Instance.Offsets["APlayerController.Pawn"]);
 
             }
@@ -25,8 +30,8 @@ namespace SoT.Game
         {
             get
             {
-                if (IsPlayerState)
-                    throw new Exception("Wrong class");
+                if (IsPlayerState || IsLocalPlayer)
+                    throw new Exception("Wrong class or not possible");
                 return SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + SotCore.Instance.Offsets["APlayerController.Character"]);
 
             }
@@ -108,9 +113,10 @@ namespace SoT.Game
             this.IsPlayerState = IsPlayerState;
         }
 
-        public Player(ulong address, bool IsPlayerState = false) : base(address)
+        public Player(ulong address, bool IsPlayerState = false, bool IsLocalPlayer = false) : base(address)
         {
             this.IsPlayerState = IsPlayerState;
+            this.IsLocalPlayer = IsLocalPlayer;
         }
     }
 }
