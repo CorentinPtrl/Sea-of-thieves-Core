@@ -134,5 +134,33 @@ namespace SoT.Game
     {
         [FieldOffset(0x0)]
         public int FNameIndex;
-    };
+
+        [FieldOffset(0x0008)]
+        public byte IslandType;
+
+        [FieldOffset(0x0018)]
+        public Vector3 IslandBoundsCentre;
+
+        [FieldOffset(0x0024)]
+        public float IslandBoundsRadius;
+
+        [FieldOffset(0x0028)]
+        public Vector3 IslandTriggerRadius;
+
+        [FieldOffset(0x002C)]
+        public float IslandSafeZoneRadius;
+
+        [FieldOffset(0x0030)]
+        public float Rotation;
+
+        public String getName()
+        {
+            return SotCore.Instance.Engine.GetName(FNameIndex);
+        }
+
+        public override string ToString()
+        {
+            return String.Format("(Island Name : {0}, Island Type : {1}, IslandBoundsCentre : {2}, IslandBoundsRadius : {3}, IslandTriggerRadius : {4}, IslandSafeZoneRadius : {5}, Rotation : {6})", getName(), IslandType, IslandBoundsCentre, IslandBoundsRadius, IslandTriggerRadius, IslandSafeZoneRadius, Rotation);
+        }
+    }
 }

@@ -39,7 +39,7 @@ namespace SotEspCoreTest
                         for (int i = 0; i < IslandArray.Length; i++)
                         {
                             Island Island = IslandArray.GetValue(i);
-                            Console.WriteLine("Island Name : {0}", core.Engine.GetName(Island.FNameIndex));
+                            Console.WriteLine(Island.ToString());
                         }
                     }
                     else if (actor.Name.Equals("CrewService"))
