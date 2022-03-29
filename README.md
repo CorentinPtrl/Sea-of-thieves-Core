@@ -64,7 +64,7 @@ else
 }
 ```
 #### Crew Service
-```
+```C#
  foreach(Crew crew in core.Crews)
 {        
 	foreach(Player player in crew.PreProcessedPlayers)
@@ -75,7 +75,7 @@ else
 ```
 
 #### Island Service
-```
+```C#
 foreach (Island island in core.Islands)
 {        
 	//Do your things here
