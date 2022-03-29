@@ -8,6 +8,7 @@ using System.Globalization;
 using Newtonsoft.Json.Converters;
 using System.IO;
 using SoT.Game.Service;
+using System.Threading;
 
 namespace SoT
 {
@@ -58,7 +59,7 @@ namespace SoT
                     return _Islands;
                 else
                 {
-                    OnTickElapsed(null, null);
+                    Update();
                     return _Islands;
                 }
             }
@@ -68,34 +69,32 @@ namespace SoT
         {
             get
             {
-                if(_Crews != null)
+                if (_Crews != null)
                     return _Crews;
                 else
                 {
-                    OnTickElapsed(null, null);
+                    Update();
                     return Crews;
                 }
             }
         }
 
-        private UE4Actor[] Actors;
-
         public Dictionary<String, JsonManager.Actor> ActorsName = new Dictionary<String, JsonManager.Actor>();
         public Dictionary<String, ulong> Offsets = new Dictionary<String, ulong>();
-
+        private UE4Actor[] Actors;
         private List<String> IncludesActors = new List<string>();
+        private int IntervalUpdate;
+        private Thread ThreadUpdate;
 
-        private static Timer Ticker;
-        public SotCore(float IntervalUpdate = 30)
+
+        public SotCore(int IntervalUpdate = 1)
         {
             if (Instance == null)
                 Instance = this;
-            Ticker = new Timer(IntervalUpdate);
-            Ticker.SynchronizingObject = null;
-            Ticker.Start();
 
             ActorsName = JsonManager.GetJsonActors();
             Offsets = JsonManager.GetJsonOffsets();
+            this.IntervalUpdate = IntervalUpdate;
 
             IncludesActors.AddRange(new String[] { "BP_PlayerPirate_C", "IslandService", "CrewService" });
             IncludesActors.AddRange(ActorsName.Keys);
@@ -133,13 +132,14 @@ namespace SoT
                 offset = Memory.ReadProcessMemory<UInt32>(UWorldPattern + 3);
                 UWorld = UWorldPattern + offset + 7;
 
-                Ticker.Elapsed += OnTickElapsed;
+                ThreadUpdate = new Thread(UpdateThread);
+                ThreadUpdate.Start();
                 return true;
             }
             return false;
         }
 
-        private void OnTickElapsed(object Sender, ElapsedEventArgs e)
+        private void Update()
         {
             UEObject Level = new UEObject(Memory.ReadProcessMemory<UInt64>(Memory.ReadProcessMemory<UInt64>(UWorld) + 0x30));
             UE4Actor Actors = new UE4Actor(Level.Address + 0xA0);
@@ -185,12 +185,21 @@ namespace SoT
             this.Actors = actorList.ToArray();
         }
 
+        private void UpdateThread()
+        {
+            while (true)
+            {
+                Update();
+                Thread.Sleep(IntervalUpdate);
+            }
+        }
+
         public UE4Actor[] GetActors()
         {
             if (this.Actors != null)
                 return this.Actors;
 
-            OnTickElapsed(null, null);
+            Update();
 
             return this.Actors;
         }
