@@ -63,5 +63,25 @@ else
     //Failed, Sea of thieves not detected
 }
 ```
+#### Crew Service
+```
+ foreach(Crew crew in core.Crews)
+{        
+	foreach(Player player in crew.PreProcessedPlayers)
+	{
+		//Do your things here
+	}
+}
+```
+
+#### Island Service
+```
+foreach (Island island in core.Islands)
+{        
+	//Do your things here
+}
+```
+
+
 ## Credits
 DougTheDruid for [SoT-Actor-Names](https://github.com/DougTheDruid/SoT-Actor-Names)
