@@ -14,55 +14,52 @@ namespace SotEspCoreTest
             SotCore core = new SotCore();
             if (core.Prepare(false))
             {
-                UE4Actor[] actors = core.GetActors();
-                foreach (UE4Actor actor in actors)
+                while (true)
                 {
-                    Console.WriteLine("Name : {0} Class Name : {1} Parent Class Name {2}", actor.Name, actor.ClassName, actor.ParentClassName);
-                    Console.WriteLine("Position {0} Custom Position {1}", actor.Position, actor.GetCustomPosition<Vector3>());
+                    UE4Actor[] actors = core.GetActors();
+                    foreach (UE4Actor actor in actors)
+                    {
+                        Console.WriteLine("Name : {0} Class Name : {1} Parent Class Name {2}", actor.Name, actor.ClassName, actor.ParentClassName);
+                        Console.WriteLine("Position {0} Custom Position {1}", actor.Position, actor.GetCustomPosition<Vector3>());
 
-                    if (actor.Name.Equals("BP_PlayerPirate_C"))
-                    {
-                        Player PiratePlayer = new Player(actor);
-                        Console.WriteLine("Player Name : {0} Current Health : {1} Max Health : {2} Wielded Item : {3}", PiratePlayer.PlayerName, PiratePlayer.CurrentHealth, PiratePlayer.MaxHealth, PiratePlayer.CurrentWieldedItem);
-                    }
-                    else if (actor.Name.Equals("BP_SmallShipTemplate_C") || actor.Name.Equals("BP_SmallShipNetProxy") || actor.Name.Equals("BP_MediumShipTemplate_C") || actor.Name.Equals("BP_MediumShipNetProxy") || actor.Name.Equals("BP_LargeShipTemplate_C") || actor.Name.Equals("BP_LargeShipNetProxy") || actor.Name.Equals("BP_Rowboat_C") || actor.Name.Equals("BP_RowboatRowingSeat_C") || actor.Name.Equals("BP_RowboatRowingSeat_C") || actor.Name.Equals("BP_Rowboat_WithFrontHarpoon_C"))
-                    {
-                        Ship ship = new Ship(actor);
-                        ShipInternalWater InternalWaterComponent = ship.ShipInternalWater;
-                        SinkingShipParams SinkingShipParams = ship.SinkingShipParams;
-                        Console.WriteLine("Water Level {0} Water Amount {1} Crew Id : {2}", InternalWaterComponent.CurrentVisualWaterLevel, InternalWaterComponent.WaterAmount, ship.CrewId);
-                    }
-                    else if(actor.Name.Equals("IslandService"))
-                    {
-                        IslandService IslandService = new IslandService(actor);
-                        TArray<Island> IslandArray = IslandService.IslandArray;
-                        for (int i = 0; i < IslandArray.Length; i++)
+                        if (actor.Name.Equals("BP_PlayerPirate_C"))
                         {
-                            Island Island = IslandArray.GetValue(i);
-                            Console.WriteLine(Island.ToString());
+                            Player PiratePlayer = new Player(actor);
+                            Console.WriteLine("Player Name : {0} Current Health : {1} Max Health : {2} Wielded Item : {3}", PiratePlayer.PlayerName, PiratePlayer.CurrentHealth, PiratePlayer.MaxHealth, PiratePlayer.CurrentWieldedItem);
+                        }
+                        else if (actor.Name.Equals("BP_SmallShipTemplate_C") || actor.Name.Equals("BP_SmallShipNetProxy") || actor.Name.Equals("BP_MediumShipTemplate_C") || actor.Name.Equals("BP_MediumShipNetProxy") || actor.Name.Equals("BP_LargeShipTemplate_C") || actor.Name.Equals("BP_LargeShipNetProxy") || actor.Name.Equals("BP_Rowboat_C") || actor.Name.Equals("BP_RowboatRowingSeat_C") || actor.Name.Equals("BP_RowboatRowingSeat_C") || actor.Name.Equals("BP_Rowboat_WithFrontHarpoon_C"))
+                        {
+                            Ship ship = new Ship(actor);
+                            ShipInternalWater InternalWaterComponent = ship.ShipInternalWater;
+                            SinkingShipParams SinkingShipParams = ship.SinkingShipParams;
+                            Console.WriteLine("Water Level {0} Water Amount {1} Crew Id : {2}", InternalWaterComponent.CurrentVisualWaterLevel, InternalWaterComponent.WaterAmount, ship.CrewId);
                         }
                     }
-                    else if (actor.Name.Equals("CrewService"))
+
+                    Console.WriteLine("Crew Service :");
+                    foreach (Crew crew in core.Crews)
                     {
-                        CrewService CrewService = new CrewService(actor);
-                        TArray<Crew> Crews = CrewService.Crews;
-                        for (int i = 0; i < Crews.Length; i++)
+                        Console.WriteLine("\t Crew : {0}", crew.CrewId.ToString());
+                        foreach (Player player in crew.PreProcessedPlayers)
                         {
-                            Crew Crew = new Crew(Crews.GetValueAddress(i));
-                            TArray<Player> Players = Crew.Players;
-                            for(int d = 0; d < Players.Length; d++)
-                            {
-                                Player player = new Player(Players.GetValuePtr(d), true);
-                                Console.WriteLine("Player Name : {0} Crew : {1}",player.PlayerName, Crew.CrewId);
-                            }
+                            Console.WriteLine("\t \t Player Name : {0} Crew : {1}", player.PlayerName, crew.CrewId);
                         }
                     }
+
+                    Console.WriteLine("Island Service :");
+                    foreach (Island island in core.Islands)
+                    {
+                        Console.WriteLine("\t Island : {0}", island.ToString());
+
+                    }
+
+
+                    Player LocalPlayer = core.LocalPlayer;
+                    Console.WriteLine("Local Player Name : {0} Current Health : {1} Max Health : {2} Oxygen Level : {3} Wielded Item : {4}", LocalPlayer.PlayerName, LocalPlayer.CurrentHealth, LocalPlayer.MaxHealth, LocalPlayer.OxygenLevel, LocalPlayer.CurrentWieldedItem);
+
+                    CameraManager cameraManager = core.CameraManager;
+                    Console.WriteLine("Camera Manager Location : {0} Rotation : {1} FOV : {2}", cameraManager.Location, cameraManager.Rotation, cameraManager.FOV);
                 }
-                Player LocalPlayer = core.LocalPlayer;
-                Console.WriteLine("Local Player Name : {0} Current Health : {1} Max Health : {2} Oxygen Level : {3} Wielded Item : {4}", LocalPlayer.PlayerName, LocalPlayer.CurrentHealth, LocalPlayer.MaxHealth, LocalPlayer.OxygenLevel, LocalPlayer.CurrentWieldedItem);
-
-                CameraManager cameraManager = core.CameraManager;
-                Console.WriteLine("Camera Manager Location : {0} Rotation : {1} FOV : {2}", cameraManager.Location, cameraManager.Rotation, cameraManager.FOV);
             }
         }
     }

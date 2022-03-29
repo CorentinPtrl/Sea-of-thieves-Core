@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System.Globalization;
 using Newtonsoft.Json.Converters;
 using System.IO;
+using SoT.Game.Service;
 
 namespace SoT
 {
@@ -17,9 +18,12 @@ namespace SoT
         public Memory Memory { get; private set; }
         public UE4Engine Engine { get; private set; }
 
-        public UInt64 UWorld { get; private set; }
-        public UInt64 GNames { get; private set; }
-        public UInt64 GObjects { get; private set; }
+        private Island[] _Islands;
+        private Crew[] _Crews;
+
+        internal UInt64 UWorld { get; private set; }
+        internal UInt64 GNames { get; private set; }
+        internal UInt64 GObjects { get; private set; }
 
         private ulong PlayerController
         {
@@ -43,6 +47,34 @@ namespace SoT
             get
             {
                 return Memory.ReadProcessMemory<CameraManager>(Memory.ReadProcessMemory<ulong>(PlayerController + Offsets["APlayerController.CameraManager"]));
+            }
+        }
+
+        public Island[] Islands
+        {
+            get
+            {
+                if (_Islands != null)
+                    return _Islands;
+                else
+                {
+                    OnTickElapsed(null, null);
+                    return _Islands;
+                }
+            }
+        }
+
+        public Crew[] Crews
+        {
+            get
+            {
+                if(_Crews != null)
+                    return _Crews;
+                else
+                {
+                    OnTickElapsed(null, null);
+                    return Crews;
+                }
             }
         }
 
@@ -116,7 +148,38 @@ namespace SoT
             {
                 UE4Actor act = new UE4Actor(Actors[i].Address);
                 if (IncludesActors.Contains(act.Name))
+                {
                     actorList.Add(act);
+                }
+                if (act.Name.Equals("IslandService"))
+                {
+                    IslandService IslandService = new IslandService(act);
+                    TArray<Island> IslandArray = IslandService.IslandArray;
+                    _Islands = new Island[IslandArray.Length];
+                    for (int b = 0; b < IslandArray.Length; b++)
+                    {
+                        _Islands[b] = IslandArray.GetValue(b);
+                    }
+                }
+                else if (act.Name.Equals("CrewService"))
+                {
+                    CrewService CrewService = new CrewService(act);
+                    TArray<Crew> Crews = CrewService.Crews;
+                    this._Crews = new Crew[Crews.Length];
+                    for (int b = 0; b < Crews.Length; b++)
+                    {
+                        Crew Crew = new Crew(Crews.GetValueAddress(b));
+                        TArray<Player> Players = Crew.Players;
+                        List<Player> CrewPlayers = new List<Player>();
+                        for (int c = 0; c < Players.Length; c++)
+                        {
+                            if (Crew.Players.Length > 4) continue;
+                            CrewPlayers.Add(new Player(Players.GetValuePtr(c), true));
+                        }
+                        Crew.PreProcessedPlayers = CrewPlayers.ToArray();
+                        this._Crews[b] = Crew;
+                    }
+                }
             }
 
             this.Actors = actorList.ToArray();
@@ -127,18 +190,9 @@ namespace SoT
             if (this.Actors != null)
                 return this.Actors;
 
-            UEObject Level = new UEObject(Memory.ReadProcessMemory<UInt64>(Memory.ReadProcessMemory<UInt64>(UWorld) + 0x30));
-            UEObject Actors = new UEObject(Level.Address + 0xA0);
-            List<UE4Actor> actorList = new List<UE4Actor>();
+            OnTickElapsed(null, null);
 
-            for (var i = 0u; i < Actors.Num; i++)
-            {
-                UE4Actor act = new UE4Actor(Actors[i].Address);
-                if (IncludesActors.Contains(act.Name))
-                    actorList.Add(act);
-            }
-
-            return actorList.ToArray();
+            return this.Actors;
         }
     }
 }

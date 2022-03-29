@@ -11,7 +11,7 @@ namespace SoT.Game
     public class Crew
     {
         public ulong Address;
-
+        public Player[] PreProcessedPlayers;
         public Guid CrewId
         {
             get
