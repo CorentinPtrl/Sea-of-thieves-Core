@@ -87,6 +87,22 @@ namespace SoT.Game
             }
         }
 
+        public Vector3 LinearVelocity
+        {
+            get
+            {
+                return actor.ReplicatedMovement.LinearVelocity;
+            }
+        }
+
+        public Vector3 AngularVelocity
+        {
+            get
+            {
+                return actor.ReplicatedMovement.AngularVelocity;
+            }
+        }
+
         public UE4Actor(ulong address) : base(address)
         {
         }
@@ -106,6 +122,16 @@ namespace SoT.Game
         {
             ulong SceneComponent = SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + (byte)SotCore.Instance.Offsets["AActor.rootComponent"]);
             return SotCore.Instance.Memory.ReadProcessMemory<T>((SceneComponent) + (byte)SotCore.Instance.Offsets["SceneComponent.FTransform"] + 0x14);
+        }
+
+        public T GetCustomLinearVelocity<T>()
+        {
+            return SotCore.Instance.Memory.ReadProcessMemory<T>(Address + SotCore.Instance.Offsets["AActor.ReplicatedMovement"] + SotCore.Instance.Offsets["RepMovement.LinearVelocity"]);
+        }
+
+        public T GetCustomAngularVelocity<T>()
+        {
+            return SotCore.Instance.Memory.ReadProcessMemory<T>(Address + SotCore.Instance.Offsets["AActor.ReplicatedMovement"] + SotCore.Instance.Offsets["RepMovement.AngularVelocity"]);
         }
     }
 }

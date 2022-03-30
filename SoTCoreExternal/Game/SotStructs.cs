@@ -26,9 +26,22 @@ namespace SoT.Game
 
         public override string ToString()
         {
-            return String.Format("(A : {0}, B: {1}, C: {2}, D : {3})",A,B,C,D);
+            return String.Format("(A : {0}, B: {1}, C: {2}, D : {3})", A, B, C, D);
         }
     }
+
+    public struct RepMovement
+    {
+        public Vector3 LinearVelocity;
+        public Vector3 AngularVelocity;
+        public Vector3 Location;
+        public Vector3 Rotation;
+        public bool bSimulatedPhysicSleep;
+        public bool bRepPhysics;
+        public byte LocationQuantizationLevel;
+        public byte VelocityQuantizationLevel;
+        public byte RotationQuantizationLevel;
+    };
 
     public struct FTransform
     {
@@ -59,6 +72,9 @@ namespace SoT.Game
     {
         [FieldOffset(0x18)]
         public int ObjectID;
+
+        [FieldOffset(0x94)]
+        public RepMovement ReplicatedMovement;
 
 
         [FieldOffset(0x170)]
