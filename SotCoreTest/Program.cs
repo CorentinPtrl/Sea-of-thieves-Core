@@ -32,6 +32,11 @@ namespace SotEspCoreTest
                         SinkingShipParams SinkingShipParams = ship.SinkingShipParams;
                         Console.WriteLine("Water Level {0} Water Amount {1} Crew Id : {2}", InternalWaterComponent.CurrentVisualWaterLevel, InternalWaterComponent.WaterAmount, ship.CrewId);
                     }
+                    else if (actor.Name.Equals("BP_Cannon_C"))
+                    {
+                        Cannon cannon = new Cannon(actor);
+                        Console.WriteLine("ProjectileSpeed : {0}, ProjectileGravityScale : {1}, ServerPitch : {2}, ServerYaw : {3}", cannon.ProjectileSpeed, cannon.ProjectileGravityScale, cannon.ServerPitch, cannon.ServerYaw);
+                    }
                 }
 
                 Console.WriteLine("Crew Service :");

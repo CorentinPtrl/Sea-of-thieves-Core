@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="Data\OffsetAttribute.cs" />
     <Compile Include="Data\Quaternion.cs" />
+    <Compile Include="Game\Cannon.cs" />
     <Compile Include="Game\Crew.cs" />
     <Compile Include="Game\Player.cs" />
     <Compile Include="Game\Service\CrewService.cs" />

@@ -96,9 +96,10 @@ namespace SoT
             Offsets = JsonManager.GetJsonOffsets();
             this.IntervalUpdate = IntervalUpdate;
 
-            IncludesActors.AddRange(new String[] { "BP_PlayerPirate_C", "IslandService", "CrewService" });
+            IncludesActors.AddRange(new String[] { "BP_PlayerPirate_C", "IslandService", "CrewService", "BP_Cannon_C" });
             IncludesActors.AddRange(ActorsName.Keys);
         }
+
         public bool Prepare(bool IsSteam)
         {
             Memory = new Memory("SoTGame");

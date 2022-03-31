@@ -179,4 +179,20 @@ namespace SoT.Game
             return String.Format("(Island Name : {0}, Island Type : {1}, IslandBoundsCentre : {2}, IslandBoundsRadius : {3}, IslandTriggerRadius : {4}, IslandSafeZoneRadius : {5}, Rotation : {6})", getName(), IslandType, IslandBoundsCentre, IslandBoundsRadius, IslandTriggerRadius, IslandSafeZoneRadius, Rotation);
         }
     }
+
+    [StructLayout(LayoutKind.Explicit)]
+    public struct ACannon
+    {
+        [FieldOffset(0x5a4)]
+        public float ProjectileSpeed;
+
+        [FieldOffset(0x5a8)]
+        public float ProjectileGravityScale;
+
+        [FieldOffset(0x76c)]
+        public float ServerPitch;
+
+        [FieldOffset(0x770)]
+        public float ServerYaw;
+    }
 }
