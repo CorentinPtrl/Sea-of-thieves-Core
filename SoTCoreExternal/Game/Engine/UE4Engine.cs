@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SoT.Game
+namespace SoT.Game.Engine
 {
     public class UE4Engine
     {

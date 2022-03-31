@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SoT.Game.Engine;
 
-namespace SoT.Game.Service
+namespace SoT.Game.Athena.Service
 {
     public class CrewService : UE4Actor
     {

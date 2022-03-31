@@ -1,13 +1,14 @@
 ﻿using SoT.Util;
 using System;
-using SoT.Game;
+using SoT.Game.Athena;
+using SoT.Game.Engine;
 using System.Collections.Generic;
 using System.Timers;
 using Newtonsoft.Json;
 using System.Globalization;
 using Newtonsoft.Json.Converters;
 using System.IO;
-using SoT.Game.Service;
+using SoT.Game.Athena.Service;
 using System.Threading;
 
 namespace SoT
@@ -21,20 +22,14 @@ namespace SoT
 
         private Island[] _Islands;
         private Crew[] _Crews;
+        private CameraManager _CameraManager;
+        private ulong PlayerController;
 
         internal UInt64 UWorld { get; private set; }
         internal UInt64 GNames { get; private set; }
         internal UInt64 GObjects { get; private set; }
 
-        private ulong PlayerController
-        {
-            get
-            {
-                ulong OwningGameInstance = Memory.ReadProcessMemory<ulong>(Memory.ReadProcessMemory<UInt64>(UWorld) + Offsets["UWorld.OwningGameInstance"]);
-                ulong LocalPlayer = Memory.ReadProcessMemory<ulong>(Memory.ReadProcessMemory<ulong>(OwningGameInstance + Offsets["UGameInstance.LocalPlayers"]));
-                return Memory.ReadProcessMemory<ulong>(LocalPlayer + 0x30);
-            }
-        }
+
         public Player LocalPlayer
         {
             get
@@ -47,7 +42,7 @@ namespace SoT
         {
             get
             {
-                return Memory.ReadProcessMemory<CameraManager>(Memory.ReadProcessMemory<ulong>(PlayerController + Offsets["APlayerController.CameraManager"]));
+                return _CameraManager;
             }
         }
 
@@ -184,6 +179,11 @@ namespace SoT
             }
 
             this.Actors = actorList.ToArray();
+
+            ulong OwningGameInstance = Memory.ReadProcessMemory<ulong>(Memory.ReadProcessMemory<UInt64>(UWorld) + Offsets["UWorld.OwningGameInstance"]);
+            ulong LocalPlayer = Memory.ReadProcessMemory<ulong>(Memory.ReadProcessMemory<ulong>(OwningGameInstance + Offsets["UGameInstance.LocalPlayers"]));
+            this.PlayerController = Memory.ReadProcessMemory<ulong>(LocalPlayer + 0x30);
+            this._CameraManager = Memory.ReadProcessMemory<CameraManager>(Memory.ReadProcessMemory<ulong>(PlayerController + Offsets["APlayerController.CameraManager"]));
         }
 
         private void UpdateThread()

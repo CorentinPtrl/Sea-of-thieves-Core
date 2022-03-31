@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SoT.Game
+namespace SoT.Game.Engine
 {
     public class UE4Actor : UEObject
     {

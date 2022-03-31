@@ -1,8 +1,8 @@
 ﻿using System;
 using SoT;
 using SoT.Data;
-using SoT.Game;
-using SoT.Game.Service;
+using SoT.Game.Engine;
+using SoT.Game.Athena;
 
 namespace SotEspCoreTest
 {
