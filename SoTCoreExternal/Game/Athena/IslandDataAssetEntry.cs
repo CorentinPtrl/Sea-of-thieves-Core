@@ -22,7 +22,7 @@ namespace SoT.Game.Athena
         {
             get
             {
-                return new TArray<TreasureMapData>(Address + SotCore.Instance.Offsets["UIslandDataAssetEntry.TreasureMaps"]);
+                return new TArray<TreasureMapData>(Address + SotCore.Instance.Offsets["UIslandDataAssetEntry.TreasureMaps"], TArrayType.Address);
             }
         }
 
@@ -30,7 +30,7 @@ namespace SoT.Game.Athena
         {
             get
             {
-                return new TArray<Vector3>(Address + SotCore.Instance.Offsets["UIslandDataAssetEntry.UndergroundTreasureLocations"]);
+                return new TArray<Vector3>(Address + SotCore.Instance.Offsets["UIslandDataAssetEntry.UndergroundTreasureLocations"], TArrayType.Struct);
             }
         }
 

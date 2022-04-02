@@ -1,5 +1,6 @@
 ﻿using SoT.Data;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace SoT.Game.Engine
 {
-    public class TArray<T>
+    public class TArray<T> : IEnumerable<T>
     {
         private ulong Address;
+        private TArrayType ArrayType;
 
         public ulong Data
         {
@@ -35,9 +37,10 @@ namespace SoT.Game.Engine
             }
         }
 
-        public TArray(ulong address)
+        public TArray(ulong address, TArrayType arrayType)
         {
             Address = address;
+            this.ArrayType = arrayType;
         }
 
         public T GetValue(int index, int size)
@@ -88,5 +91,43 @@ namespace SoT.Game.Engine
         {
             return SotCore.Instance.Memory.ReadProcessMemory<ulong>(Data + (ulong)(8 * index));
         }
+
+        public T GetValueEnumerator(int i)
+        {
+            switch(ArrayType)
+            {
+                case TArrayType.Pointer:
+                    return (T)typeof(T).GetConstructor(new Type[] { typeof(ulong) }).Invoke(new Object[] { GetValuePtr(i) });
+                    break;
+                case TArrayType.Address:
+                    return (T)typeof(T).GetConstructor(new Type[] { typeof(ulong) }).Invoke(new Object[] { GetValueAddress(i) });
+                    break;
+                case TArrayType.Struct:
+                    return GetValue(i);
+                    break;
+            }
+            throw new NotImplementedException("ArrayType isn't recognized");
+        }
+
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            for(int i = 0; i < Length; i++)
+            {
+                yield return GetValueEnumerator(i);
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    }
+
+    public enum TArrayType
+    {
+        Struct = 0,
+        Pointer = 1,
+        Address = 2
     }
 }

@@ -42,17 +42,13 @@ namespace SotEspCoreTest
                     {
                         IslandService islandService = new IslandService(actor);
                         IslandDataAsset islandDataAsset = islandService.IslandDataAsset;
-                        for (int i = 0; i < islandDataAsset.IslandDataEntries.Length; i++)
+                        foreach(IslandDataAssetEntry entry in islandDataAsset.IslandDataEntries)
                         {
-                            IslandDataAssetEntry entry = new IslandDataAssetEntry(islandDataAsset.IslandDataEntries.GetValuePtr(i));
-                            TArray<TreasureMapData> TreasureMapData = entry.TreasureMaps;
-                            for(int b = 0; b < TreasureMapData.Length; b++)
+                            Console.WriteLine("Island Name : {0}", entry.IslandName);
+                            foreach (TreasureMapData mapData in entry.TreasureMaps)
                             {
-                                TreasureMapData mapData = new TreasureMapData(TreasureMapData.GetValueAddress(b));
-                                TArray<TreasureLocationData> treasureLocationData = mapData.TreasureLocations;
-                                for(int c = 0; c < treasureLocationData.Length; c++)
+                                foreach (TreasureLocationData treasureLocatioData in mapData.TreasureLocations)
                                 {
-                                    TreasureLocationData treasureLocatioData = treasureLocationData.GetValue(c);
                                     Console.WriteLine("Island Name : {0}, World Location : {1}, Treasure Island Location : {2}", entry.IslandName, treasureLocatioData.WorldSpaceLocation, treasureLocatioData.IslandSpaceLocation);
                                 }
                             }

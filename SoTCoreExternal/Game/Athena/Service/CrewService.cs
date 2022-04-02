@@ -13,7 +13,7 @@ namespace SoT.Game.Athena.Service
         {
             get
             {
-                return new TArray<Crew>(Address + SotCore.Instance.Offsets["ACrewService.Crews"]);
+                return new TArray<Crew>(Address + SotCore.Instance.Offsets["ACrewService.Crews"], TArrayType.Address);
             }
         }
         public CrewService(UE4Actor actor) : base(actor.Address)

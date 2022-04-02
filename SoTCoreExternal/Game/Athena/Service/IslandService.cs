@@ -13,7 +13,7 @@ namespace SoT.Game.Athena.Service
         {
             get
             {
-                return new TArray<Island>(Address + SotCore.Instance.Offsets["IslandService.IslandArray"]);
+                return new TArray<Island>(Address + SotCore.Instance.Offsets["IslandService.IslandArray"], TArrayType.Struct);
             }
         }
 

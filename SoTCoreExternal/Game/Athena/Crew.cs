@@ -33,7 +33,7 @@ namespace SoT.Game.Athena
         {
             get
             {
-                return new TArray<Player>(Address + SotCore.Instance.Offsets["Crew.Players"]);
+                return new TArray<Player>(Address + SotCore.Instance.Offsets["Crew.Players"], TArrayType.Pointer);
             }
         }
 

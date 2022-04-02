@@ -17,7 +17,7 @@ namespace SoT.Game.Athena
         {
             get
             {
-                return new TArray<TreasureLocationData>(Address + SotCore.Instance.Offsets["FTreasureMapData.TreasureLocations"]);
+                return new TArray<TreasureLocationData>(Address + SotCore.Instance.Offsets["FTreasureMapData.TreasureLocations"], TArrayType.Address);
             }
         }
 
