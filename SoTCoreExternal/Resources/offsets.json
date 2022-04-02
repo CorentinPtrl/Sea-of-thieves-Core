@@ -18,6 +18,8 @@
   "Crew.CrewId": 0,
   "Crew.SessionId": 16,
   "Crew.Players": 32,
+  "Crew.CrewSessionTemplate": 48,
+  "FCrewSessionTemplate.MaxMatchmakingPlayers": 48,
   "APlayerController.CameraManager": 1120,
   "APlayerController.Pawn": 984,
   "APlayerController.Character": 1000,
@@ -45,5 +47,4 @@
   "FTreasureLocationData.IslandSpaceLocation": 12,
   "TreasureLocationData.Size": 32,
   "FVector.Size": 12
-
 }

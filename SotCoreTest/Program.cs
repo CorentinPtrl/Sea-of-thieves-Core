@@ -66,7 +66,7 @@ namespace SotEspCoreTest
                     Console.WriteLine("\t Crew : {0}", crew.CrewId.ToString());
                     foreach (Player player in crew.PreProcessedPlayers)
                     {
-                        Console.WriteLine("\t \t Player Name : {0} Crew : {1}", player.PlayerName, crew.CrewId);
+                        Console.WriteLine("\t \t Player Name : {0} Crew : {1} MaxMatchmakingPlayers : {2}", player.PlayerName, crew.CrewId, crew.MaxMatchmakingPlayers);
                     }
                 }
 

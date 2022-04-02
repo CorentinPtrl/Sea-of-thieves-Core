@@ -37,6 +37,15 @@ namespace SoT.Game.Athena
             }
         }
 
+        public int MaxMatchmakingPlayers
+        {
+            get
+            {
+                ulong CrewSessionTemplate = Address + SotCore.Instance.Offsets["Crew.CrewSessionTemplate"];
+                return SotCore.Instance.Memory.ReadProcessMemory<int>(CrewSessionTemplate + SotCore.Instance.Offsets["FCrewSessionTemplate.MaxMatchmakingPlayers"]);
+            }
+        }
+
         public Crew(ulong address)
         {
             Address = address;
