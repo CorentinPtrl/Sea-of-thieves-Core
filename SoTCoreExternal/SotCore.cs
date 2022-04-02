@@ -22,7 +22,6 @@ namespace SoT
 
         private Island[] _Islands;
         private Crew[] _Crews;
-        private CameraManager _CameraManager;
         private ulong PlayerController;
 
         internal UInt64 UWorld { get; private set; }
@@ -42,7 +41,7 @@ namespace SoT
         {
             get
             {
-                return _CameraManager;
+                return Memory.ReadProcessMemory<CameraManager>(Memory.ReadProcessMemory<ulong>(PlayerController + Offsets["APlayerController.CameraManager"]));
             }
         }
 
@@ -183,7 +182,6 @@ namespace SoT
             ulong OwningGameInstance = Memory.ReadProcessMemory<ulong>(Memory.ReadProcessMemory<UInt64>(UWorld) + Offsets["UWorld.OwningGameInstance"]);
             ulong LocalPlayer = Memory.ReadProcessMemory<ulong>(Memory.ReadProcessMemory<ulong>(OwningGameInstance + Offsets["UGameInstance.LocalPlayers"]));
             this.PlayerController = Memory.ReadProcessMemory<ulong>(LocalPlayer + 0x30);
-            this._CameraManager = Memory.ReadProcessMemory<CameraManager>(Memory.ReadProcessMemory<ulong>(PlayerController + Offsets["APlayerController.CameraManager"]));
         }
 
         private void UpdateThread()

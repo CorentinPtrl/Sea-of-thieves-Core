@@ -3,6 +3,7 @@ using SoT;
 using SoT.Data;
 using SoT.Game.Engine;
 using SoT.Game.Athena;
+using SoT.Game.Athena.Service;
 
 namespace SotEspCoreTest
 {
@@ -36,6 +37,26 @@ namespace SotEspCoreTest
                     {
                         Cannon cannon = new Cannon(actor);
                         Console.WriteLine("ProjectileSpeed : {0}, ProjectileGravityScale : {1}, ServerPitch : {2}, ServerYaw : {3}", cannon.ProjectileSpeed, cannon.ProjectileGravityScale, cannon.ServerPitch, cannon.ServerYaw);
+                    }
+                    else if (actor.Name.Equals("IslandService"))
+                    {
+                        IslandService islandService = new IslandService(actor);
+                        IslandDataAsset islandDataAsset = islandService.IslandDataAsset;
+                        for (int i = 0; i < islandDataAsset.IslandDataEntries.Length; i++)
+                        {
+                            IslandDataAssetEntry entry = new IslandDataAssetEntry(islandDataAsset.IslandDataEntries.GetValuePtr(i));
+                            TArray<TreasureMapData> TreasureMapData = entry.TreasureMaps;
+                            for(int b = 0; b < TreasureMapData.Length; b++)
+                            {
+                                TreasureMapData mapData = new TreasureMapData(TreasureMapData.GetValueAddress(b));
+                                TArray<TreasureLocationData> treasureLocationData = mapData.TreasureLocations;
+                                for(int c = 0; c < treasureLocationData.Length; c++)
+                                {
+                                    TreasureLocationData treasureLocatioData = treasureLocationData.GetValue(c);
+                                    Console.WriteLine("Island Name : {0}, World Location : {1}, Treasure Island Location : {2}", entry.IslandName, treasureLocatioData.WorldSpaceLocation, treasureLocatioData.IslandSpaceLocation);
+                                }
+                            }
+                        }
                     }
                 }
 

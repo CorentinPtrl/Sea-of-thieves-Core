@@ -33,6 +33,17 @@
   "UWorld.OwningGameInstance": 448,
   "UWorld.PersistentLevel": 48,
   "IslandService.IslandArray": 1160,
-  "Island.Size": 104
+  "IslandService.IslandDataAsset": 1120,
+  "Island.Size": 104,
+  "UIslandDataAsset.IslandDataEntries": 72,
+  "UIslandDataAssetEntry.IslandName": 40,
+  "UIslandDataAssetEntry.TreasureMaps": 48,
+  "UIslandDataAssetEntry.UndergroundTreasureLocations": 40,
+  "FTreasureMapData.TreasureLocations": 16,
+  "TreasureMapData.Size": 40,
+  "FTreasureLocationData.WorldSpaceLocation": 0,
+  "FTreasureLocationData.IslandSpaceLocation": 12,
+  "TreasureLocationData.Size": 32,
+  "FVector.Size": 12
 
 }

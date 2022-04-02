@@ -118,9 +118,14 @@ namespace SoT.Game.Athena
             return SotCore.Instance.Engine.GetName(FNameIndex);
         }
 
+        public IslandType GetIslandType()
+        {
+            return (Athena.IslandType)IslandType;
+        }
+
         public override string ToString()
         {
-            return String.Format("(Island Name : {0}, Island Type : {1}, IslandBoundsCentre : {2}, IslandBoundsRadius : {3}, IslandTriggerRadius : {4}, IslandSafeZoneRadius : {5}, Rotation : {6})", getName(), IslandType, IslandBoundsCentre, IslandBoundsRadius, IslandTriggerRadius, IslandSafeZoneRadius, Rotation);
+            return String.Format("(Island Name : {0}, Island Type : {1}, IslandBoundsCentre : {2}, IslandBoundsRadius : {3}, IslandTriggerRadius : {4}, IslandSafeZoneRadius : {5}, Rotation : {6})", getName(), GetIslandType(), IslandBoundsCentre, IslandBoundsRadius, IslandTriggerRadius, IslandSafeZoneRadius, Rotation);
         }
     }
 

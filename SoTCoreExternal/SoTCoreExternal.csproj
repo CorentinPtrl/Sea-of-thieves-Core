@@ -90,11 +90,16 @@
     <Compile Include="Data\Quaternion.cs" />
     <Compile Include="Game\Athena\Cannon.cs" />
     <Compile Include="Game\Athena\Crew.cs" />
+    <Compile Include="Game\Athena\IslandDataAsset.cs" />
+    <Compile Include="Game\Athena\IslandDataAssetEntry.cs" />
+    <Compile Include="Game\Athena\IslandType.cs" />
     <Compile Include="Game\Athena\Player.cs" />
     <Compile Include="Game\Athena\Service\CrewService.cs" />
     <Compile Include="Game\Athena\Service\IslandService.cs" />
     <Compile Include="Game\Athena\Ship.cs" />
     <Compile Include="Game\Athena\SotStructs.cs" />
+    <Compile Include="Game\Athena\TreasureLocationData.cs" />
+    <Compile Include="Game\Athena\TreasureMapData.cs" />
     <Compile Include="Game\Engine\TArray.cs" />
     <Compile Include="Game\Engine\UE4Structs.cs" />
     <Compile Include="SotCore.cs" />

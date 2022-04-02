@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SoT.Data
 {
+    [OffsetAttribute("FVector")]
     public struct Vector3
     {
         public float X;

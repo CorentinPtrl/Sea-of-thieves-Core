@@ -16,6 +16,15 @@ namespace SoT.Game.Athena.Service
                 return new TArray<Island>(Address + SotCore.Instance.Offsets["IslandService.IslandArray"]);
             }
         }
+
+        public IslandDataAsset IslandDataAsset
+        {
+            get
+            {
+                return new IslandDataAsset(SotCore.Instance.Memory.ReadProcessMemory<ulong>(Address + SotCore.Instance.Offsets["IslandService.IslandDataAsset"]));
+            }
+        }
+
         public IslandService(UE4Actor actor) : base(actor.Address)
         {
         }
