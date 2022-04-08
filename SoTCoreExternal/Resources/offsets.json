@@ -12,7 +12,7 @@
   "AItemInfo.UItemDesc": 40,
   "AActor.actorId": 24,
   "AActor.rootComponent": 368,
-  "SceneComponent.FTransform": 320,
+  "SceneComponent.FTransform": 336,
   "ACrewService.Crews": 1192,
   "Crew.Size": 144,
   "Crew.CrewId": 0,

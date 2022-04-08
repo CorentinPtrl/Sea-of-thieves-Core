@@ -31,7 +31,7 @@ namespace SoT.Game.Engine
     [StructLayout(LayoutKind.Explicit)]
     public struct SceneComponent
     {
-        [FieldOffset(0x140)]
+        [FieldOffset(0x150)]
         public FTransform transform;
     }
 
